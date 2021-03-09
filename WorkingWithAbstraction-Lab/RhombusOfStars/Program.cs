@@ -31,6 +31,7 @@ namespace RhombusOfStars
                     Console.WriteLine(string.Join(' ', new string('*', row + 1).ToCharArray()));                                  
                 }             
             }
+
             public void PrintMiddle()
             {
                 Console.WriteLine(string.Join(' ', new string('*', this.Size).ToCharArray()));
