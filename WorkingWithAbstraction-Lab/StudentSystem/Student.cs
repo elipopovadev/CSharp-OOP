@@ -31,7 +31,7 @@ namespace StudentSystem
 
             else
             {
-                sb.Append("Very nice person");
+                sb.Append("Very nice person.");
             }
 
             return sb.ToString();

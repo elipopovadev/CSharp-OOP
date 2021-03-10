@@ -10,27 +10,30 @@ namespace StudentSystem
             this.studentDatabase = new StudentDataBase();
         }
 
-        public void ParseCommand()
+        public void ParseCommands()
         {
-            string[] commandArgs = Console.ReadLine().Split();
-            string command = commandArgs[0];
-            if (command == "Create")
+            while (true)
             {
-                string name = commandArgs[1];
-                int age = int.Parse(commandArgs[2]);
-                double grade = double.Parse(commandArgs[3]);
-                Create(name, age, grade);
-            }
+                string[] commandArgs = Console.ReadLine().Split();
+                string command = commandArgs[0];
+                if (command == "Create")
+                {
+                    string name = commandArgs[1];
+                    int age = int.Parse(commandArgs[2]);
+                    double grade = double.Parse(commandArgs[3]);
+                    Create(name, age, grade);
+                }
 
-            else if (command == "Show")
-            {
-                string name = commandArgs[1];
-                Show(name);
-            }
+                else if (command == "Show")
+                {
+                    string name = commandArgs[1];
+                    Show(name);
+                }
 
-            else if (command == "Exit")
-            {
-                Exit();
+                else if (command == "Exit")
+                {
+                    return;
+                }
             }
         }
 
@@ -46,11 +49,6 @@ namespace StudentSystem
             {
                 Console.WriteLine(student);
             }
-        }
-
-        private void Exit()
-        {
-            Environment.Exit(0);
         }
     }
 }
