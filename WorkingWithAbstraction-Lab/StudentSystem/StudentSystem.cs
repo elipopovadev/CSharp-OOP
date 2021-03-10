@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace StudentSystem
 {
     public class StudentSystem
     {
-        private Dictionary<string, Student> repository;
+        private StudentDataBase studentDatabase;
         public StudentSystem()
         {
-            this.repository = new Dictionary<string, Student>();
+            this.studentDatabase = new StudentDataBase();
         }
 
         public void ParseCommand()
@@ -37,19 +36,15 @@ namespace StudentSystem
 
         private void Create(string name, int age, double grade)
         {
-            if (!this.repository.ContainsKey(name))
-            {
-                Student newStudent = new Student(name, age, grade);
-                this.repository[name] = newStudent;
-            }
+            studentDatabase.Add(name, age, grade);
         }
 
         private void Show(string name)
         {
-            if (this.repository.ContainsKey(name))
+            Student student = studentDatabase.Find(name);
+            if (student != null)
             {
-                Student foundedStudent = this.repository[name]; 
-                Console.WriteLine(foundedStudent.ToString());
+                Console.WriteLine(student);
             }
         }
 
@@ -59,6 +54,4 @@ namespace StudentSystem
         }
     }
 }
-
-
 
