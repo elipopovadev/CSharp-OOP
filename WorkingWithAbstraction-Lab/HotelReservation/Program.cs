@@ -20,7 +20,7 @@ namespace HotelReservation
 
             else
             {
-                DiscountType discount = 0;
+                DiscountType discount = DiscountType.None;
                 totalPrice = PriceCalcualtor.GetTotalPrice(price, numberOfDays, season, discount);
             }
 
