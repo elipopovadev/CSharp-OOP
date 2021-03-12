@@ -31,8 +31,8 @@
 
         public string Model { get; set; }
         public string Power { get; set; }
-        public int? Displacement { get; }
-        public string Efficiency { get; }
+        public int? Displacement { get; set; }
+        public string Efficiency { get; set; }
     }
 }
 
