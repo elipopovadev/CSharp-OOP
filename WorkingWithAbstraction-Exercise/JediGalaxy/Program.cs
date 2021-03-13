@@ -29,6 +29,11 @@ namespace JediGalaxy
                 long evilStartCol = 0;
                 ValidateEvilStart(matrixRows, matrixCols, evilRow, evilCol, out evilStartRow, out evilStartCol);
 
+                if(evilStartRow <= matrixRows - 1 && evilStartCol >= 0 && evilStartCol <= matrixCols - 1)
+                {
+                    matrix[evilStartRow, evilStartCol] = 0; // if evils starts in the matrix, he destroyes the current star
+                }
+
                 while (evilStartRow > 0 && evilStartCol > 0)
                 {
                     EvilDestroysStars(matrix, ref evilStartRow, ref evilStartCol);
@@ -36,7 +41,7 @@ namespace JediGalaxy
 
                 if (ivoStartRow <= matrixRows - 1 && ivoStartCol >= 0 && ivoStartCol <= matrixCols - 1)
                 {
-                    sumOfStars += matrix[ivoStartRow, ivoStartCol]; // if Ivo's start is in the matrix, he collects the current star
+                    sumOfStars += matrix[ivoStartRow, ivoStartCol]; // if Ivo starts is in the matrix, he collects the current star
                 }
 
                 while (ivoStartRow > 0 && ivoStartCol < matrixCols - 1)
