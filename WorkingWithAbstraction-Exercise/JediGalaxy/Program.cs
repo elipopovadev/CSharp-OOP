@@ -7,7 +7,7 @@ namespace JediGalaxy
     {
         static void Main(string[] args)
         {
-            int[] arrayInfo = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+            int[] arrayInfo = Console.ReadLine().Split().Select(int.Parse).ToArray();
             int matrixRows = arrayInfo[0];
             int matrixCols = arrayInfo[1];
             int[,] matrix = CreateMatrix(matrixRows, matrixCols);
