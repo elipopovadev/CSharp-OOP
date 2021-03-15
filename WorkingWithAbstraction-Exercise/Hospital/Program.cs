@@ -50,7 +50,7 @@ namespace Hospital
                     }
                 }              
             }
-;
+
             string command;
             while ((command = Console.ReadLine()) != "End")
             {
