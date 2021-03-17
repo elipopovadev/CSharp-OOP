@@ -7,6 +7,6 @@
             this.Quantity = quantity;
         }
 
-        public long Quantity { get; }
+        public long Quantity { get; set ; }
     }
 }

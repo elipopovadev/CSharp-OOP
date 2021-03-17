@@ -1,4 +1,5 @@
-﻿namespace GreedyTimes
+﻿
+namespace GreedyTimes
 {
    public class Gem
     {

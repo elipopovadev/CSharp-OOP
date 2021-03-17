@@ -39,7 +39,7 @@ namespace GreedyTimes
             totalSumGem = 0;
             foreach (Gem currentGem in this.GemQuantity)
             {
-                totalSumGem += (long) currentGem.Quantity;
+                totalSumGem += currentGem.Quantity;
             }
 
             return totalSumGem;
@@ -50,7 +50,7 @@ namespace GreedyTimes
             {
                 this.GoldQuantity += gold.Quantity;
                 this.CountTotalItems += gold.Quantity;
-            }          
+            }
         }
 
         public void AddGem(Gem gem)
@@ -74,13 +74,13 @@ namespace GreedyTimes
                     }
 
                     this.CountTotalItems += gem.Quantity;
-                }            
+                }
             }
         }
 
         public void AddCash(Cash cash)
         {
-            if(this.CountTotalItems + cash.Quantity <= this.Capacity)
+            if (this.CountTotalItems + cash.Quantity <= this.Capacity)
             {
                 totalSumGem = CheckTotalSumGem();
                 totalSumCash = CheckTotalSumCash();
@@ -100,9 +100,9 @@ namespace GreedyTimes
                     }
 
                     this.CountTotalItems += cash.Quantity;
-                }              
+                }
             }
-        }    
+        }
 
         public void PrintTotalAmount()
         {
@@ -110,24 +110,25 @@ namespace GreedyTimes
             {
                 Console.WriteLine($"<Gold> ${this.GoldQuantity}");
                 Console.WriteLine($"##Gold - {this.GoldQuantity}");
-                if (totalSumGem > 0)
+            }        
+
+            if (this.GemQuantity.Count > 0)
+            {
+                Console.WriteLine($"<Gem> ${totalSumGem}");
+                foreach (var gem in this.GemQuantity.OrderByDescending(g => g.Name).ThenBy(g => g.Quantity))
                 {
-                    Console.WriteLine($"<Gem> ${totalSumGem}");
-                    foreach (var gem in this.GemQuantity.OrderByDescending(g => g.Name).ThenBy(g => g.Quantity))
-                    {
-                        Console.WriteLine($"##{gem.Name} - {gem.Quantity}");
-                    }
+                    Console.WriteLine($"##{gem.Name} - {gem.Quantity}");
                 }
-               
-                if (totalSumCash > 0)
+            }
+
+            if (this.CashQuantity.Count > 0)
+            {
+                Console.WriteLine($"<Cash> ${totalSumCash}");
+                foreach (var cash in this.CashQuantity.OrderByDescending(c => c.Currency).ThenBy(c => c.Quantity))
                 {
-                    Console.WriteLine($"<Cash> ${totalSumCash}");
-                    foreach (var cash in this.CashQuantity.OrderByDescending(c => c.Currency).ThenBy(c => c.Quantity))
-                    {
-                        Console.WriteLine($"##{cash.Currency} - {cash.Quantity}");
-                    }
-                }                
-            }            
+                    Console.WriteLine($"##{cash.Currency} - {cash.Quantity}");
+                }
+            }
         }
     }
 }
