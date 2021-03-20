@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hospital", "Hospital\Hospit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreedyTimes", "GreedyTimes\GreedyTimes.csproj", "{A8978299-C3BD-451F-A622-C0F21F9FDE8B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sneaking", "Sneaking\Sneaking.csproj", "{8AFB8773-A5D9-495F-99C3-413F6A2C5FBA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{A8978299-C3BD-451F-A622-C0F21F9FDE8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8978299-C3BD-451F-A622-C0F21F9FDE8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8978299-C3BD-451F-A622-C0F21F9FDE8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AFB8773-A5D9-495F-99C3-413F6A2C5FBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AFB8773-A5D9-495F-99C3-413F6A2C5FBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AFB8773-A5D9-495F-99C3-413F6A2C5FBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AFB8773-A5D9-495F-99C3-413F6A2C5FBA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
