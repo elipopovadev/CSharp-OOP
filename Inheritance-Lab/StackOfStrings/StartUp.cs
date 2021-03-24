@@ -18,7 +18,7 @@ namespace CustomStack
             Console.WriteLine(string.Join(" ",stringStack));
             Console.WriteLine(stringStack.IsEmpty());
 
-            StackOfStrings<int> intStack = new StackOfStrings<int>(); // the name StackOfString is not correct in the requirement
+            StackOfStrings<int> intStack = new StackOfStrings<int>(); 
             intStack.Push(1);
             intStack.Push(2);
             Stack<int> intStackForAdd = new Stack<int>();
