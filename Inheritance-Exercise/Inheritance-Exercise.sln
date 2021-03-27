@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeedForSpeed", "NeedForSpee
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurant", "Restaurant\Restaurant.csproj", "{7F8B0E83-42DE-4098-8281-606F12755C93}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animals", "Animals\Animals.csproj", "{DE104534-F4B0-4523-B309-78A445C35B39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{7F8B0E83-42DE-4098-8281-606F12755C93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F8B0E83-42DE-4098-8281-606F12755C93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F8B0E83-42DE-4098-8281-606F12755C93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE104534-F4B0-4523-B309-78A445C35B39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE104534-F4B0-4523-B309-78A445C35B39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE104534-F4B0-4523-B309-78A445C35B39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE104534-F4B0-4523-B309-78A445C35B39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
