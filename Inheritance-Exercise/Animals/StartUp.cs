@@ -53,7 +53,7 @@ namespace Animals
                     }
                 }
 
-                catch (Exception exeption)
+                catch (ArgumentOutOfRangeException exeption)
                 {
                     Console.WriteLine(exeption);
                 }

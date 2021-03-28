@@ -30,7 +30,7 @@ namespace Animals
                 }
                 else
                 {
-                    throw new InvalidOperationException("Invalid input!");
+                    throw new ArgumentOutOfRangeException("Invalid input!");
                 }
             }
         }
@@ -49,7 +49,7 @@ namespace Animals
 
                 else
                 {
-                    throw new InvalidOperationException("Invalid input!");
+                    throw new ArgumentOutOfRangeException("Invalid input!");
                 }
             }
         }
