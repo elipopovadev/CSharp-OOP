@@ -25,7 +25,6 @@ namespace PersonsInfo
 
                 catch (ArgumentOutOfRangeException exeption)
                 {
-
                     Console.WriteLine(exeption);
                 }               
             }
