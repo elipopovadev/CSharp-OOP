@@ -18,7 +18,7 @@ namespace ClassBoxData
 
             catch (ArgumentOutOfRangeException exception)
             {
-                Console.WriteLine(exception);
+                Console.WriteLine(exception.Message);
             }          
         }
     }
