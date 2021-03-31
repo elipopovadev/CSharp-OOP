@@ -1,8 +1,7 @@
 ﻿using System;
 
 namespace Validation
-{
-  
+{ 
     public class Person
     {
         private const decimal MinSalary = 460;
@@ -29,7 +28,7 @@ namespace Validation
                     throw new ArgumentOutOfRangeException("First name cannot contain fewer than 3 symbols!");
                 }
 
-                firstName = value;
+                this.firstName = value;
             }
         }
 
