@@ -80,6 +80,7 @@ namespace Validation
             {
                 this.Salary += parcentage / 100 / 2 * this.Salary;
             }
+
             else
             {
                 this.Salary += parcentage / 100 * this.Salary;
