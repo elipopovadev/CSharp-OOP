@@ -37,7 +37,7 @@ namespace FootballTeamGenerator
             if (this.teamPlayers.Count > 0)
             {
                 double result = this.teamPlayers.Select(p => p.Value.PlayerSkills).Average();
-                return (int)Math.Round(result,0,MidpointRounding.AwayFromZero);
+                return (int)Math.Round(result);
             }
 
             else

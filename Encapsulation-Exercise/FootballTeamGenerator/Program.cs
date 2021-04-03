@@ -14,7 +14,7 @@ namespace FootballTeamGenerator
             {
                 try
                 {
-                    string[] commandArray = command.Split(";");
+                    string[] commandArray = command.Split(";",StringSplitOptions.RemoveEmptyEntries);
                     if (commandArray.Contains("Team"))
                     {
                         string teamName = commandArray[1];
