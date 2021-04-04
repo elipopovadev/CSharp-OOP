@@ -2,11 +2,11 @@
 {
    public class Cake : Dessert
     {
-        private const decimal cakePrice = 5;
-        private const double cakeGrams = 250;
-        private const double cakeCalories = 1000;
+        private const decimal CakePrice = 5;
+        private const double CakeGrams = 250;
+        private const double CakeCalories = 1000;
       
-        public Cake(string name) : base(name, cakePrice, cakeGrams, cakeCalories)
+        public Cake(string name) : base(name, CakePrice, CakeGrams, CakeCalories)
         {           
         }
     }

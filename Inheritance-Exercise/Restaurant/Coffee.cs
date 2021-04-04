@@ -2,10 +2,10 @@
 {
     public class Coffee : HotBeverage
     {
-        private const double  coffeMilliliteres = 50;
-        private const decimal cofeePrice = 3.50m;
+        private const double  CoffeMilliliteres = 50;
+        private const decimal CofeePrice = 3.50m;
 
-        public Coffee(string name, double caffeine) : base(name, cofeePrice, coffeMilliliteres)
+        public Coffee(string name, double caffeine) : base(name, CofeePrice, CoffeMilliliteres)
         {
             this.Caffeine = caffeine;
         }
