@@ -4,11 +4,11 @@ namespace PizzaCalories
 {
     public class Topping
     {
-        private const double meatModifier = 1.2;
-        private const double veggiesModifier = 0.8;
-        private const double cheeseModifier = 1.1;
-        private const double sauceModifier = 0.9;
-        private const double baseCaloriesPerGram = 2;
+        private const double MeatModifier = 1.2;
+        private const double VeggiesModifier = 0.8;
+        private const double CheeseModifier = 1.1;
+        private const double SauceModifier = 0.9;
+        private const double BaseCaloriesPerGram = 2;
         private string toppingType;
         private int weight;
 
@@ -61,22 +61,22 @@ namespace PizzaCalories
             string toppingTypeToLower = this.ToppingType.ToLower();
             if(toppingTypeToLower == "meat")
             {
-                return baseCaloriesPerGram * meatModifier;
+                return BaseCaloriesPerGram * MeatModifier;
             }
 
             else if(toppingTypeToLower == "veggies")
             {
-                return baseCaloriesPerGram * veggiesModifier;
+                return BaseCaloriesPerGram * VeggiesModifier;
             }
 
             else if(toppingTypeToLower == "cheese")
             {
-                return baseCaloriesPerGram * cheeseModifier;
+                return BaseCaloriesPerGram * CheeseModifier;
             }
 
             else if(toppingTypeToLower == "sauce")
             {
-                return baseCaloriesPerGram * sauceModifier;
+                return BaseCaloriesPerGram * SauceModifier;
             }
 
             return 0.00;

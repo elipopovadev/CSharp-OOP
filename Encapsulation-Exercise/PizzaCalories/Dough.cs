@@ -4,12 +4,12 @@ namespace PizzaCalories
 {
     public class Dough
     {
-        private const double baseCaloriesPerGram = 2;
-        private const double whiteModifier = 1.5;
-        private const double wholegrainModifier = 1.0;
-        private const double crispyModifier = 0.9;
-        private const double chewyModifier = 1.1;
-        private const double homemadeModifier = 1.0;
+        private const double BaseCaloriesPerGram = 2;
+        private const double WhiteModifier = 1.5;
+        private const double WholegrainModifier = 1.0;
+        private const double CrispyModifier = 0.9;
+        private const double ChewyModifier = 1.1;
+        private const double HomemadeModifier = 1.0;
         private string flourType;
         private string bakingTechnique;
         private int weight;
@@ -79,32 +79,32 @@ namespace PizzaCalories
             string bakingTechniqueToLower = this.BakingTechnique.ToLower();
             if (flourTypeToLower == "white" && bakingTechniqueToLower == "crispy")
             {
-                return baseCaloriesPerGram * whiteModifier * crispyModifier;
+                return BaseCaloriesPerGram * WhiteModifier * CrispyModifier;
             }
 
             else if (flourTypeToLower == "white" && bakingTechniqueToLower == "chewy")
             {
-                return baseCaloriesPerGram * whiteModifier * chewyModifier;
+                return BaseCaloriesPerGram * WhiteModifier * ChewyModifier;
             }
 
             else if (flourTypeToLower == "white" && bakingTechniqueToLower == "homemade")
             {
-                return baseCaloriesPerGram * whiteModifier * homemadeModifier;
+                return BaseCaloriesPerGram * WhiteModifier * HomemadeModifier;
             }
 
             else if (flourTypeToLower == "wholegrain" && bakingTechniqueToLower == "crispy")
             {
-                return baseCaloriesPerGram * wholegrainModifier * crispyModifier;
+                return BaseCaloriesPerGram * WholegrainModifier * CrispyModifier;
             }
 
             else if (flourTypeToLower == "wholegrain" && bakingTechniqueToLower == "chewy")
             {
-                return baseCaloriesPerGram * wholegrainModifier * chewyModifier;
+                return BaseCaloriesPerGram * WholegrainModifier * ChewyModifier;
             }
 
             else if (flourTypeToLower == "wholegrain" && bakingTechniqueToLower == "homemade")
             {
-                return baseCaloriesPerGram * wholegrainModifier * homemadeModifier;
+                return BaseCaloriesPerGram * WholegrainModifier * HomemadeModifier;
             }
 
             return 0.0;
