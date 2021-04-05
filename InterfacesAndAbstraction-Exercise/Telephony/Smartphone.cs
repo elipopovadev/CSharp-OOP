@@ -7,7 +7,7 @@ namespace Telephony
     {
         public void CallOtherPhone(string Number)
         {
-            if (!Number.All(Char.IsDigit))
+            if (!Number.All(char.IsDigit))
             {
                 throw new ArgumentException("Invalid number!");
             }
