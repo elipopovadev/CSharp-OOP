@@ -33,7 +33,7 @@ namespace BorderControl
             }
 
             string lastThreeDigitsOfFakeIDs = Console.ReadLine();
-            var listWithFakeIDs = all.Where(x => x.Value.ID.EndsWith(lastThreeDigitsOfFakeIDs))
+            var listWithFakeIDs = all.Where(x => x.Key.EndsWith(lastThreeDigitsOfFakeIDs))
                                   .Select(x => x.Value.ID).ToList();
 
             Console.WriteLine(string.Join(Environment.NewLine, listWithFakeIDs));                    
