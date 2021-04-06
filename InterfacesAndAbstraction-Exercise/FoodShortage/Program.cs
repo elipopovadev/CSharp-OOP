@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace FoodShortage
@@ -18,7 +19,7 @@ namespace FoodShortage
                     string name = input[0];
                     int age = int.Parse(input[1]);
                     string id = input[2];
-                    string birthday = input[3];
+                    DateTime birthday = DateTime.ParseExact(input[3], "dd/MM/yyyy", CultureInfo.InvariantCulture);
                     Citizen newCitizen = new Citizen(name, age, id, birthday);
                     all.Add(name, newCitizen);
                 }

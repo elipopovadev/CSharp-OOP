@@ -6,12 +6,12 @@ namespace FoodShortage
 {
     public class Citizen : INameable, IAgeable, IBuyer
     {
-        public Citizen(string name, int age, string id, string birthdate)
+        public Citizen(string name, int age, string id, DateTime birthdate)
         {
             this.Name = name;
             this.Age = age;
             this.ID = id;
-            this.Birthdate = DateTime.ParseExact(birthdate,"DD-MM-YYYY",CultureInfo.InvariantCulture);
+            this.Birthdate = birthdate;
             this.Food = 0;
         }
         
