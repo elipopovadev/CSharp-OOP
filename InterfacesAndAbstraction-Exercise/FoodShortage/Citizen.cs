@@ -11,7 +11,7 @@ namespace FoodShortage
             this.Name = name;
             this.Age = age;
             this.ID = id;
-            this.Birthdate = DateTime.Parse(birthdate, new CultureInfo("de-DE"));
+            this.Birthdate = DateTime.ParseExact(birthdate,"DD-MM-YYYY",CultureInfo.InvariantCulture);
             this.Food = 0;
         }
         
