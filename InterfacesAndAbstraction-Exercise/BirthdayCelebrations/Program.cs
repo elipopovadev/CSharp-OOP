@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace BirthdayCelebrations
@@ -19,7 +20,7 @@ namespace BirthdayCelebrations
                     string name = inputArray[1];
                     int age = int.Parse(inputArray[2]);
                     string id = inputArray[3];
-                    DateTime birthday = DateTime.Parse(inputArray[4]);
+                    DateTime birthday = DateTime.ParseExact(inputArray[4], "dd/MM/yyyy", CultureInfo.InvariantCulture);
                     IBirthable newCitizen = new Citizen(name, age, id, birthday);
                     all.Add(newCitizen.Birthdate, newCitizen);
                 }
