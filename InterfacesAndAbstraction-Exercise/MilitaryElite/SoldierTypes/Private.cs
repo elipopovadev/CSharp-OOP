@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 namespace MilitaryElite
 {
     public class Private : Soldier, IPrivate
@@ -12,7 +13,8 @@ namespace MilitaryElite
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Name: {base.FirstName} {base.LastName} Id: {base.Id} Salary: {this.Salary:f2}");
+            decimal roundedSalary = Math.Round(this.Salary, 2);
+            sb.AppendLine($"Name: {base.FirstName} {base.LastName} Id: {base.Id} Salary: {roundedSalary}");
             return sb.ToString().TrimEnd();
         }
     }
