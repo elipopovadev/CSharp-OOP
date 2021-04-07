@@ -49,8 +49,7 @@ namespace MilitaryElite
                     {
                         int idCurrentPrivate = int.Parse(inputArray[i]);
                         Private foundedPrivate = onlyAllPrivates.FirstOrDefault(p => p.Key == idCurrentPrivate).Value;
-                        privatesForCurrentLieutenant.Add(foundedPrivate); // current private is assigned to currentLieutenant
-                        onlyAllPrivates.Remove(idCurrentPrivate);
+                        privatesForCurrentLieutenant.Add(foundedPrivate); 
                     }
 
                     Soldier newLieutenantGeneral = new LieutenantGeneral(id, firstName, lastName, salary, privatesForCurrentLieutenant);
