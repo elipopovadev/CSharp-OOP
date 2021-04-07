@@ -65,7 +65,7 @@ namespace MilitaryElite
                     decimal salary = decimal.Parse(inputArray[4]);
                     string corps = inputArray[5];
                     var repairsForCurrentEngineer = new List<Repair>();
-                    for (int i = 6; i < inputArray.Length - 1; i += 2)
+                    for (int i = 6; i < inputArray.Length; i += 2)
                     {
                         string part = inputArray[i];
                         int hours = int.Parse(inputArray[i + 1]);
@@ -93,7 +93,7 @@ namespace MilitaryElite
                     decimal salary = decimal.Parse(inputArray[4]);
                     string corps = inputArray[5];
                     var missionsForCurrentCommando = new List<Mission>();
-                    for (int i = 6; i < inputArray.Length - 1; i += 2)
+                    for (int i = 6; i < inputArray.Length; i += 2)
                     {
                         try
                         {
