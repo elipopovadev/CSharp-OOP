@@ -18,7 +18,6 @@ namespace MilitaryElite
             private set
             {
                 if (value != "inProgress" && value != "Finished")
-
                 {
                     throw new ArgumentException();
                 }
