@@ -80,9 +80,7 @@ namespace MilitaryElite
                     }
 
                     catch (Exception)
-                    {
-
-                        
+                    {               
                     }
                 }
 
@@ -114,8 +112,7 @@ namespace MilitaryElite
                     }
 
                     catch (Exception)
-                    {
-                       
+                    {                      
                     }        
                 }               
             }
