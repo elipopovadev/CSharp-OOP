@@ -10,7 +10,6 @@ namespace MilitaryElite
         }
 
         public int CodeNumber { get;}
-
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

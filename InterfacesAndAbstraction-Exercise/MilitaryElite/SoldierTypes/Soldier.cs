@@ -8,10 +8,9 @@
             this.FirstName = firstName;
             this.LastName = lastName;
         }
+
         public int Id { get;set; }
-
         public string FirstName { get;set; }
-
         public string LastName { get;set; }
     }
 }

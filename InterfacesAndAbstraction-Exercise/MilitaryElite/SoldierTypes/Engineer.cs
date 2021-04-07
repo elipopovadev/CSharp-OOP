@@ -12,7 +12,6 @@ namespace MilitaryElite
         }
 
         public ICollection<Repair> Repairs { get;}
-
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

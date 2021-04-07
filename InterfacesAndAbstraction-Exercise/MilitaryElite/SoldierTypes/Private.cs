@@ -9,7 +9,6 @@ namespace MilitaryElite
         }
 
         public decimal Salary { get; private set; }
-
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

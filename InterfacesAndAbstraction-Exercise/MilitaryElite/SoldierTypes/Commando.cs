@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace MilitaryElite
@@ -13,7 +12,6 @@ namespace MilitaryElite
         }
 
         public List<Mission> Missions { get; }
-
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
