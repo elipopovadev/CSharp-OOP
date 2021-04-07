@@ -18,11 +18,11 @@ namespace MilitaryElite
         {
             StringBuilder sb = new StringBuilder();
             decimal roundedSalary = Math.Round(base.Salary, 2);
-            sb.AppendLine($"Name: {base.FirstName} {base.LastName} Id: {base.Id} Salary: {roundedSalary}");
+            sb.AppendLine($"Name: {base.FirstName} {base.LastName} Id: {base.Id} Salary: {roundedSalary:f2}");
             sb.AppendLine("Privates:");
             foreach (var currentPrivate in Privates)
             {
-                sb.AppendLine(currentPrivate.ToString());
+                sb.AppendLine($" {currentPrivate.ToString()}");
             }
 
             return sb.ToString().TrimEnd();

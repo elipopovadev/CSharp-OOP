@@ -14,7 +14,7 @@ namespace MilitaryElite
         {
             StringBuilder sb = new StringBuilder();
             decimal roundedSalary = Math.Round(this.Salary, 2);
-            sb.AppendLine($"Name: {base.FirstName} {base.LastName} Id: {base.Id} Salary: {roundedSalary}");
+            sb.AppendLine($"Name: {base.FirstName} {base.LastName} Id: {base.Id} Salary: {roundedSalary:f2}");
             return sb.ToString().TrimEnd();
         }
     }
