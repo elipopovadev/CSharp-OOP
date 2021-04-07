@@ -2,7 +2,7 @@
 
 namespace MilitaryElite
 {
-    interface ILieutenantGeneral
+   public interface ILieutenantGeneral
     {
         public IReadOnlyCollection<Private> Privates { get;}
     }

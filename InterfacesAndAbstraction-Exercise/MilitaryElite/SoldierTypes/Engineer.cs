@@ -16,8 +16,7 @@ namespace MilitaryElite
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            decimal roundedSalary = Math.Round(base.Salary, 2);
-            sb.AppendLine($"Name: {base.FirstName} {base.LastName} Id: {base.Id} Salary: {roundedSalary:f2}");
+            sb.AppendLine($"Name: {base.FirstName} {base.LastName} Id: {base.Id} Salary: {base.Salary:F2}");
             sb.AppendLine($"Corps: {base.Corps}");
             sb.AppendLine("Repairs:");
             foreach (var currentRepair in this.Repairs)

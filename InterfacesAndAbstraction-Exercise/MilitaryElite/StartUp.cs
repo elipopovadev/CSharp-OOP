@@ -14,7 +14,7 @@ namespace MilitaryElite
             string input;
             while ((input = Console.ReadLine()) != "End")
             {
-                string[] inputArray = input.Split(" ",StringSplitOptions.RemoveEmptyEntries);
+                string[] inputArray = input.Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
                 string militaryType = inputArray[0];
                 if (militaryType == "Private")
@@ -40,7 +40,7 @@ namespace MilitaryElite
 
                 else if (militaryType == "LieutenantGeneral")
                 {
-                    int id= int.Parse( inputArray[1]);
+                    int id = int.Parse(inputArray[1]);
                     string firstName = inputArray[2];
                     string lastName = inputArray[3];
                     decimal salary = decimal.Parse(inputArray[4]);
@@ -50,71 +50,69 @@ namespace MilitaryElite
                         int idCurrentPrivate = int.Parse(inputArray[i]);
                         Private foundedPrivate = onlyAllPrivates.FirstOrDefault(p => p.Key == idCurrentPrivate).Value;
                         privatesForCurrentLieutenant.Add(foundedPrivate); // current private is assigned to currentLieutenant
-                        onlyAllPrivates.Remove(idCurrentPrivate); 
+                        onlyAllPrivates.Remove(idCurrentPrivate);
                     }
 
                     Soldier newLieutenantGeneral = new LieutenantGeneral(id, firstName, lastName, salary, privatesForCurrentLieutenant);
                     totalSoldiers.Add(newLieutenantGeneral);
                 }
 
-                else if(militaryType == "Engineer")
+                else if (militaryType == "Engineer")
                 {
-                    try
+
+                    int id = int.Parse(inputArray[1]);
+                    string firstName = inputArray[2];
+                    string lastName = inputArray[3];
+                    decimal salary = decimal.Parse(inputArray[4]);
+                    string corps = inputArray[5];
+                    var repairsForCurrentEngineer = new List<Repair>();
+                    for (int i = 6; i < inputArray.Length - 1; i += 2)
                     {
-                        int id = int.Parse(inputArray[1]);
-                        string firstName = inputArray[2];
-                        string lastName = inputArray[3];
-                        decimal salary = decimal.Parse(inputArray[4]);
-                        string corps = inputArray[5];
-                        var repairsForCurrentEngineer = new List<Repair>();
-                        for (int i = 6; i < inputArray.Length - 1; i += 2)
+                        string part = inputArray[i];
+                        int hours = int.Parse(inputArray[i + 1]);
+                        try
                         {
-                            string part = inputArray[i];
-                            int hours = int.Parse(inputArray[i + 1]);
                             Repair newrepair = new Repair(part, hours);
                             repairsForCurrentEngineer.Add(newrepair);
                         }
+                        catch (Exception ex)
+                        {
+
+                        }
+                    }
 
                         Soldier newEngineer = new Engineer(id, firstName, lastName, salary, corps, repairsForCurrentEngineer);
-                        totalSoldiers.Add(newEngineer);
-                    }
-
-                    catch (Exception)
-                    {               
-                    }
+                        totalSoldiers.Add(newEngineer);                   
                 }
 
                 else if (militaryType == "Commando")
                 {
-                    try
+
+                    int id = int.Parse(inputArray[1]);
+                    string firstName = inputArray[2];
+                    string lastName = inputArray[3];
+                    decimal salary = decimal.Parse(inputArray[4]);
+                    string corps = inputArray[5];
+                    var missionsForCurrentCommando = new List<Mission>();
+                    for (int i = 6; i < inputArray.Length - 1; i += 2)
                     {
-                        int id = int.Parse(inputArray[1]);
-                        string firstName = inputArray[2];
-                        string lastName = inputArray[3];
-                        decimal salary = decimal.Parse(inputArray[4]);
-                        string corps = inputArray[5];
-                        var missionsForCurrentCommando = new List<Mission>();
-                        for (int i = 6; i < inputArray.Length - 1; i += 2)
+                        try
                         {
                             string codeName = inputArray[i];
                             string state = inputArray[i + 1];
-                            if (state != "inProgress")
-                            {
-                                continue;
-                            }
-
                             Mission newMission = new Mission(codeName, state);
                             missionsForCurrentCommando.Add(newMission);
                         }
 
-                        Soldier newCommando = new Commando(id, firstName, lastName, salary, corps, missionsForCurrentCommando);
-                        totalSoldiers.Add(newCommando);
+                        catch (Exception ex)
+                        {
+
+                        }
                     }
 
-                    catch (Exception)
-                    {                      
-                    }        
-                }               
+                    Soldier newCommando = new Commando(id, firstName, lastName, salary, corps, missionsForCurrentCommando);
+                    totalSoldiers.Add(newCommando);
+                }
             }
 
             Console.WriteLine(string.Join(Environment.NewLine, totalSoldiers));

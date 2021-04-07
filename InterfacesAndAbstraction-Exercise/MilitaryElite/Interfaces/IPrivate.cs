@@ -1,7 +1,8 @@
 ﻿namespace MilitaryElite
 {
-    public interface IPrivate
+   public interface IPrivate : ISoldier
     {
         public decimal Salary { get; }
+
     }
 }

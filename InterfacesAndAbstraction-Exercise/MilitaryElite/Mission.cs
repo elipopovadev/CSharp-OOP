@@ -1,6 +1,8 @@
-﻿namespace MilitaryElite
+﻿using System;
+
+namespace MilitaryElite
 {
-    public class Mission
+    public class Mission : IMission
     {
         private string state;
         public Mission(string codeName, string state)
@@ -15,10 +17,13 @@
             get => state;
             private set
             {
-                if(value == "inProgress")
+                if (value != "inProgress" && value != "Finished")
+
                 {
-                    state = value;
+                    throw new ArgumentException();
                 }
+
+                this.state = value;
             }
         }
 

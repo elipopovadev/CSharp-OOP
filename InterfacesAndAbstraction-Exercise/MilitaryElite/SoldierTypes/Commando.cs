@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Text;
-using System;
 
 namespace MilitaryElite
 {
@@ -16,13 +15,12 @@ namespace MilitaryElite
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            decimal roundedSalary = Math.Round(base.Salary, 2);
-            sb.AppendLine($"Name: {base.FirstName} {base.LastName} Id: {base.Id} Salary: {roundedSalary:f2}");
+            sb.AppendLine($"Name: {base.FirstName} {base.LastName} Id: {base.Id} Salary: {base.Salary:F2}");
             sb.AppendLine($"Corps: {base.Corps}");
             sb.AppendLine("Missions:");
             foreach (var currentMission in this.Missions)
             {
-                sb.AppendLine(currentMission.ToString());
+                sb.AppendLine($"  {currentMission.ToString()}");
             }
 
             return sb.ToString().TrimEnd();

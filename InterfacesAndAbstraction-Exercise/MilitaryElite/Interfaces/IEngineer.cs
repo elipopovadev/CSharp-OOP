@@ -2,7 +2,7 @@
 
 namespace MilitaryElite
 {
-    interface IEngineer
+    public interface IEngineer
     {
         public ICollection<Repair> Repairs { get;}
     }

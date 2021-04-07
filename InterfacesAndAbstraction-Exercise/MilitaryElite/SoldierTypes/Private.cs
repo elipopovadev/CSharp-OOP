@@ -13,8 +13,7 @@ namespace MilitaryElite
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            decimal roundedSalary = Math.Round(this.Salary, 2);
-            sb.AppendLine($"Name: {base.FirstName} {base.LastName} Id: {base.Id} Salary: {roundedSalary:f2}");
+            sb.AppendLine($"Name: {base.FirstName} {base.LastName} Id: {base.Id} Salary: {this.Salary:F2}");
             return sb.ToString().TrimEnd();
         }
     }
