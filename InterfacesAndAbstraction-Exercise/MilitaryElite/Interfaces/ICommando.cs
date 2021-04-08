@@ -2,8 +2,9 @@
 
 namespace MilitaryElite
 {
-    interface ICommando
+    public interface ICommando : ISpecialisedSoldier
     {
-        public List<Mission> Missions { get;}
+        public IReadOnlyCollection<IMission> Missions { get;}
+        public void AddMission(IMission mission);
     }
 }

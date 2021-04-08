@@ -2,8 +2,10 @@
 
 namespace MilitaryElite
 {
-    public interface IEngineer
+    public interface IEngineer : ISpecialisedSoldier
     {
-        public ICollection<Repair> Repairs { get;}
+        public IReadOnlyCollection<IRepair> Repairs { get;}
+
+        public void AddRepair(IRepair repair);
     }
 }

@@ -6,13 +6,19 @@ namespace MilitaryElite
 {
     public class LieutenantGeneral : Private, ILieutenantGeneral
     {
-        public LieutenantGeneral(int id, string firstName, string lastName, decimal salary, List<Private> privates)
+        private ICollection<IPrivate> privates;
+        public LieutenantGeneral(int id, string firstName, string lastName, decimal salary)
                                 : base(id, firstName, lastName, salary)
         {
-            this.Privates = privates;            
+            this.privates = new List<IPrivate>();            
         }
 
-        public IReadOnlyCollection<Private> Privates { get; }
+        public IReadOnlyCollection<IPrivate> Privates => (IReadOnlyCollection < IPrivate >) privates;
+
+        public void AddPrivate(IPrivate @private)
+        {
+           this.privates.Add(@private);
+        }
 
         public override string ToString()
         {
@@ -21,7 +27,7 @@ namespace MilitaryElite
             sb.AppendLine("Privates:");
             foreach (var currentPrivate in Privates)
             {
-                sb.AppendLine($" {currentPrivate.ToString()}");
+                sb.AppendLine($"  Name: {currentPrivate.FirstName} {currentPrivate.LastName} Id: {currentPrivate.Id} Salary: {currentPrivate.Salary:F2}");
             }
 
             return sb.ToString().TrimEnd();
