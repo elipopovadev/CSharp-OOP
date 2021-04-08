@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace MilitaryElite.Core
 {
-   public class Engine : IEngine
+    public class Engine : IEngine
     {
         private IReader reader;
         private IWriter writer;
@@ -20,7 +20,7 @@ namespace MilitaryElite.Core
         }
 
         public Engine(IReader reader, IWriter writer)
-            :this()
+            : this()
         {
             this.reader = reader;
             this.writer = writer;
@@ -31,7 +31,7 @@ namespace MilitaryElite.Core
             string command;
             while ((command = this.reader.ReadLine()) != "End")
             {
-                string[] commandArguments = command.Split(" ",StringSplitOptions.RemoveEmptyEntries);
+                string[] commandArguments = command.Split(" ", StringSplitOptions.RemoveEmptyEntries);
                 string soldierType = commandArguments[0];
                 int id = int.Parse(commandArguments[1]);
                 string firstName = commandArguments[2];
@@ -44,10 +44,10 @@ namespace MilitaryElite.Core
                     soldier = new Private(id, firstName, lastName, salary);
                 }
 
-                else if(soldierType == "LieutenantGeneral")
+                else if (soldierType == "LieutenantGeneral")
                 {
                     decimal salary = decimal.Parse(commandArguments[4]);
-                    ILieutenantGeneral general  = new LieutenantGeneral(id, firstName, lastName, salary);
+                    ILieutenantGeneral general = new LieutenantGeneral(id, firstName, lastName, salary);
 
                     foreach (var privateId in commandArguments.Skip(5))
                     {
@@ -58,7 +58,7 @@ namespace MilitaryElite.Core
                     soldier = general;
                 }
 
-                else if(soldierType == "Engineer")
+                else if (soldierType == "Engineer")
                 {
                     decimal salary = decimal.Parse(commandArguments[4]);
                     string corps = commandArguments[5];
@@ -66,10 +66,10 @@ namespace MilitaryElite.Core
                     {
                         IEngineer engineer = new Engineer(id, firstName, lastName, salary, corps);
                         string[] repairsArguments = commandArguments.Skip(6).ToArray();
-                        for (int i = 0; i < repairsArguments.Length; i+=2)
+                        for (int i = 0; i < repairsArguments.Length; i += 2)
                         {
                             string partName = repairsArguments[i];
-                            int hoursWorked = int.Parse(repairsArguments[i+1]);
+                            int hoursWorked = int.Parse(repairsArguments[i + 1]);
                             IRepair repair = new Repair(partName, hoursWorked);
                             engineer.AddRepair(repair);
                         }
@@ -80,10 +80,10 @@ namespace MilitaryElite.Core
                     catch (InvalidCorpsException)
                     {
                         continue;
-                    }                                    
+                    }
                 }
 
-                else if(soldierType== "Commando")
+                else if (soldierType == "Commando")
                 {
                     decimal salary = decimal.Parse(commandArguments[4]);
                     string corps = commandArguments[5];
@@ -91,8 +91,8 @@ namespace MilitaryElite.Core
                     {
                         ICommando commando = new Commando(id, firstName, lastName, salary, corps);
                         string[] missionArguments = commandArguments.Skip(6).ToArray();
-                        for (int i = 0; i < missionArguments.Length; i+=2)
-                        {                          
+                        for (int i = 0; i < missionArguments.Length; i += 2)
+                        {
                             try
                             {
                                 string missionCodeName = missionArguments[i];
@@ -117,7 +117,7 @@ namespace MilitaryElite.Core
                     }
                 }
 
-                else if(soldierType == "Spy")
+                else if (soldierType == "Spy")
                 {
                     int codeNumber = int.Parse(commandArguments[4]);
                     soldier = new Spy(id, firstName, lastName, codeNumber);
@@ -126,7 +126,7 @@ namespace MilitaryElite.Core
                 if (soldier != null)
                 {
                     this.soldiers.Add(soldier);
-                }              
+                }
             }
 
             foreach (var soldier in this.soldiers)
