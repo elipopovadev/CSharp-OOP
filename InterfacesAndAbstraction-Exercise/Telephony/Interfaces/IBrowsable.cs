@@ -2,6 +2,6 @@
 {
     interface IBrowsable
     {
-        public void BrowseInWeb(string URL);
+        public string BrowseInWeb(string URL);
     }
 }

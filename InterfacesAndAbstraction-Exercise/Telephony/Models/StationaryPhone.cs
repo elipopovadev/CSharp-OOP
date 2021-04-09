@@ -5,14 +5,14 @@ namespace Telephony
 {
     public class StationaryPhone : ICallable
     {
-        public void CallOtherPhone(string Number)
+        public string CallOtherPhone(string Number)
         {
-            if (!Number.All(char.IsDigit))
+            if (!Number.All(ch => char.IsDigit(ch)))
             {
                 throw new ArgumentException("Invalid number!");
             }
 
-            Console.WriteLine($"Dialing... {Number}");
+            return $"Dialing... {Number}";
         }
     }
 }

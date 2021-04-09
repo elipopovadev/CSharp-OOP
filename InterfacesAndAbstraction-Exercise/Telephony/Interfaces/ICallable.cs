@@ -2,6 +2,6 @@
 {
     interface ICallable
     {
-        public void CallOtherPhone(string Number);
+        public string CallOtherPhone(string Number);
     }
 }
