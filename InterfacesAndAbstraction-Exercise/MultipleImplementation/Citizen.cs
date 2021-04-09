@@ -12,9 +12,9 @@ namespace DefineAnInterfaceIPerson
             this.Birthdate = birthday;
         }
 
-        public string Name { get;}
-        public int Age { get;}
-        public string Id { get; }
-        public string Birthdate { get;}
+        public string Id { get; private set; }
+        public string Name { get; private set; }
+        public int Age { get; private set; }     
+        public string Birthdate { get; private set; }
     }
 }
