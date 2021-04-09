@@ -112,7 +112,6 @@ namespace MilitaryElite.Core
 
                     catch (InvalidCorpsException)
                     {
-
                         continue;
                     }
                 }
