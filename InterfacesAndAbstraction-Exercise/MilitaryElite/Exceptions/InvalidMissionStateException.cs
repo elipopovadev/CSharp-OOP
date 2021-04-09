@@ -4,8 +4,8 @@ namespace MilitaryElite.Exceptions
 {
     public class InvalidMissionStateException : Exception
     {
-        private const string DEF_EXC_MSG= "Invalid mission state!";
-        public InvalidMissionStateException() : base()
+        private const string DEF_EXC_MSG = "Invalid mission state!";
+        public InvalidMissionStateException() : base(DEF_EXC_MSG)
         {
         }
 
