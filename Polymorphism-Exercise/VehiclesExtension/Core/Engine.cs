@@ -80,7 +80,6 @@ namespace Vehicles.Core
 
                 catch (InvalidOperationException ex)
                 {
-
                     Console.WriteLine(ex.Message);
                 }
             }
