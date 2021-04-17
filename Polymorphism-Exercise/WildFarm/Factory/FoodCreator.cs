@@ -1,4 +1,5 @@
 ﻿using WildFarm.Models;
+using System;
 
 namespace WildFarm.Factory
 {
@@ -25,6 +26,11 @@ namespace WildFarm.Factory
             else if(type == "Seeds")
             {
                 food = new Seeds(quantity);
+            }
+
+            else if(type == null)
+            {
+                throw new ArgumentNullException();
             }
 
             return food;

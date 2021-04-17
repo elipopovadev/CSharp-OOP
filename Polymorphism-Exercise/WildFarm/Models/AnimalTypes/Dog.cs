@@ -19,8 +19,6 @@ namespace WildFarm.Models.AnimalTypes
             return "Woof!";
         }
 
-        public IReadOnlyCollection<Type> FoodTypes => (IReadOnlyCollection<Type>)foodTypes;
-
         public override void FeedIt(Food food)
         {
             if (!foodTypes.Any(f => f.Name == food.GetType().Name))
@@ -30,11 +28,7 @@ namespace WildFarm.Models.AnimalTypes
             }
 
             int quantity = food.Quantity;
-            for (int i = 0; i < quantity; i++)
-            {
-                base.Weight += IncrementIncreaseWeight;
-            }
-
+            base.Weight += quantity * IncrementIncreaseWeight;
             base.FoodEaten += quantity;
         }
 

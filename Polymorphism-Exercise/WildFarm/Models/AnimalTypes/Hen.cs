@@ -16,11 +16,7 @@ namespace WildFarm.Models.AnimalTypes
         public override void FeedIt(Food food)
         {
             int quantity = food.Quantity;
-            for (int i = 0; i < quantity; i++)
-            {
-                base.Weight += IncrementIncreaseWeight;
-            }
-
+            base.Weight += quantity * IncrementIncreaseWeight;
             base.FoodEaten += quantity;
         }
     }

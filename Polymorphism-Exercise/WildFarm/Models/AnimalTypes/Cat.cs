@@ -9,6 +9,7 @@ namespace WildFarm.Models.AnimalTypes
     {
         private const double IncrementIncreaseWeight = 0.30;
         private ICollection<Type> foodTypes = new List<Type> { typeof(Vegetable), typeof(Meat) };
+
         public Cat(string name, double weight, string livingRegion, string breed) : base(name, weight, livingRegion, breed)
         {
         }
@@ -17,8 +18,6 @@ namespace WildFarm.Models.AnimalTypes
         {
             return "Meow";
         }
-
-        public IReadOnlyCollection<Type> FoodTypes => (IReadOnlyCollection<Type>)foodTypes;
 
         public override void FeedIt(Food food)
         {
@@ -29,11 +28,7 @@ namespace WildFarm.Models.AnimalTypes
             }
 
             int quantity = food.Quantity;
-            for (int i = 0; i < quantity; i++)
-            {
-                base.Weight += IncrementIncreaseWeight;
-            }
-
+            base.Weight += quantity * IncrementIncreaseWeight;
             base.FoodEaten += quantity;
         }
     }
