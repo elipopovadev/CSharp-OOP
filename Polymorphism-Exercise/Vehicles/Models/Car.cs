@@ -8,7 +8,6 @@
         {
             this.FuelQuantity = fuelQuantity;
             this.FuelConsumption = fuelConsumption;
-
         }
         
         public override double FuelConsumption
