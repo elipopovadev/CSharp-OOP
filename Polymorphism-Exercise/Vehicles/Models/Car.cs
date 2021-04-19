@@ -10,6 +10,7 @@
             this.FuelConsumption = fuelConsumption;
 
         }
+        
         public override double FuelConsumption
         {
             get => fuelConsumption;
