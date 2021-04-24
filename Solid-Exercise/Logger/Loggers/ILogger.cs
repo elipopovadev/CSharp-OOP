@@ -1,6 +1,4 @@
-﻿using Logger.Error;
-
-namespace Logger.Loggers
+﻿namespace Logger.Loggers
 {
    public interface ILogger
     {

@@ -1,6 +1,7 @@
 ﻿using Logger.Enums;
 using Logger.Interfaces;
 using System;
+using System.Text;
 
 namespace Logger.Appenders
 {
@@ -11,10 +12,23 @@ namespace Logger.Appenders
             this.Layout = layout;
         }
         public ILayout Layout { get; }
-
-        public void Append(string DateTime, ReportLevel LogLevel, string message)
+        public ReportLevel ReportLevel { get; set; }
+        public int CounterOfMessages { get; protected set; }
+        public void Append(string DateTime, ReportLevel reportLevel, string message)
         {
-            Console.WriteLine(this.Layout.Format, DateTime, LogLevel, message);
+            if(reportLevel >= this.ReportLevel)
+            {
+                Console.WriteLine(this.Layout.Format, DateTime, reportLevel, message);
+                this.CounterOfMessages++;
+            }       
+        }
+
+        public string Info()
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine($"Appender type: {nameof(ConsoleAppender)}, Layout type: {this.Layout}, Report level: {this.ReportLevel}, " +
+                $"Messages appended: {this.CounterOfMessages}");
+            return sb.ToString();
         }
     }
 }

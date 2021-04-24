@@ -29,27 +29,27 @@ namespace Logger.Loggers
 
         public void Fatal(string dateTime,string message)
         {
-            Append(dateTime, message, ReportLevel.Fatal);
+            Append(dateTime, message, ReportLevel.FATAL);
         }
 
         public void Critical(string dateTime, string message)
         {
-            Append(dateTime, message, ReportLevel.Critical);
+            Append(dateTime, message, ReportLevel.CRITICAL);
         }
 
         public void Error(string dateTime, string message)
         {
-            Append(dateTime, message, ReportLevel.Error);
+            Append(dateTime, message, ReportLevel.ERROR);
         }
 
         public void Warning(string dateTime, string message)
         {
-            Append(dateTime, message, ReportLevel.Warning);
+            Append(dateTime, message, ReportLevel.WARNING);
         }
 
         public void Info(string dateTime, string message)
         {
-            Append(dateTime, message, ReportLevel.Info);
+            Append(dateTime, message, ReportLevel.INFO);
         }
 
         private void Append(string dateTime, string message, ReportLevel reportLevel)
