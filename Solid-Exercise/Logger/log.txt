@@ -1,0 +1,14 @@
+{        
+"log": {
+"date": 3/31/2015 5:23:54 PM,
+"level": Info,
+"message": mscorlib.dll does not respond
+}
+}
+{        
+"log": {
+"date": 3/31/2015 5:23:54 PM,
+"level": Critical,
+"message": No connection string found in App.config
+}
+}
