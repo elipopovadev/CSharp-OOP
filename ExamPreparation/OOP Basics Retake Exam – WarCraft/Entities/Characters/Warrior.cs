@@ -10,7 +10,7 @@ namespace WarCroft.Entities.Characters
         private const double BaseHealthWarrior = 100;
         private const double BaseArmorWarrior = 50;
         private const double AbilityPointsWarrior = 40;
-        protected Warrior(string name) : base(name, BaseHealthWarrior, BaseArmorWarrior, AbilityPointsWarrior, new Satchel())
+        public Warrior(string name) : base(name, BaseHealthWarrior, BaseArmorWarrior, AbilityPointsWarrior, new Satchel())
         {
         }
 
