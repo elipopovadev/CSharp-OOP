@@ -5,7 +5,6 @@ using WarCroft.Constants;
 
 namespace WarCroft.Entities.Items
 {
-	// Christmas came early this year - this class is already implemented for you!
 	public abstract class Item
 	{
 		protected Item(int weight)
@@ -13,7 +12,7 @@ namespace WarCroft.Entities.Items
 			this.Weight = weight;
 		}
 
-		public int Weight { get; }
+		public int Weight { get;}
 
 		public virtual void AffectCharacter(Character character)
 		{
