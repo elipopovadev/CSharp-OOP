@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using WarCroft.Constants;
 using WarCroft.Entities.Inventory.Bags;
 using WarCroft.Entities.Items;
@@ -99,6 +100,25 @@ namespace WarCroft.Entities.Characters.Contracts
         {
             this.EnsureAlive();
             item.AffectCharacter(this);
+        }
+
+        public override string ToString()
+        {
+            string characterStatus = null;
+            if (this.IsAlive)
+            {
+                characterStatus = "Alive";
+            }
+
+            else
+            {
+                characterStatus = "Dead";
+            }
+
+            StringBuilder sb = new StringBuilder();
+            string value = $"{this.Name} - HP: {this.Health}/{this.BaseHealth}, AP: {this.Armor}/{this.BaseArmor}, Status: {characterStatus}";
+            sb.AppendLine(value);
+            return sb.ToString().TrimEnd();
         }
     }
 }
