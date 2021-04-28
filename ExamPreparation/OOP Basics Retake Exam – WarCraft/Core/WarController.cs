@@ -11,8 +11,8 @@ namespace WarCroft.Core
 {
     public class WarController
     {
-        private List<Character> characterParty;
-        private Stack<Item> itemPool;
+        private readonly List<Character> characterParty;
+        private readonly Stack<Item> itemPool;
         public WarController()
         {
             this.characterParty = new List<Character>();
@@ -73,7 +73,7 @@ namespace WarCroft.Core
         public string GetStats()
         {
             StringBuilder sb = new StringBuilder();
-            foreach (var character in characterParty.OrderByDescending(c => c.IsAlive).ThenBy(c => c.Health))
+            foreach (var character in characterParty.OrderByDescending(c => c.IsAlive).ThenByDescending(c => c.Health))
             {
                 sb.AppendLine(character.ToString());
             }
@@ -104,12 +104,13 @@ namespace WarCroft.Core
 
             attacker.Attack(receiverCharacter);
             var sb = new StringBuilder();
-            sb.AppendFormat(SuccessMessages.AttackCharacter, attackerName, receiverName,
-                attackerCharacter.AbilityPoints, receiverName, receiverCharacter.Health, receiverCharacter.BaseHealth,
-                receiverCharacter.Armor, receiverCharacter.BaseArmor);
+            string messageSuccessfullAtack = String.Format(SuccessMessages.AttackCharacter, attackerName, receiverName, attackerCharacter.AbilityPoints,
+                receiverName, receiverCharacter.Health, receiverCharacter.BaseHealth, receiverCharacter.Armor, receiverCharacter.BaseArmor);
+            sb.AppendLine(messageSuccessfullAtack);
             if (!receiverCharacter.IsAlive)
             {
-                sb.AppendFormat(SuccessMessages.AttackKillsCharacter, receiverName);
+                string messageForDead = String.Format(SuccessMessages.AttackKillsCharacter, receiverName);
+                sb.AppendLine(messageForDead);
             }
 
             return sb.ToString().TrimEnd();
@@ -117,7 +118,30 @@ namespace WarCroft.Core
 
         public string Heal(string[] args)
         {
-            throw new NotImplementedException();
+            string healerName = args[0];
+            string healingReceiverName = args[1];
+            Character healerCharacter = this.characterParty.FirstOrDefault(c => c.Name == healerName);
+            if (healerCharacter == null)
+            {
+                throw new ArgumentException(ExceptionMessages.CharacterNotInParty);
+            }
+
+            Character healingReceiverCharacter = this.characterParty.FirstOrDefault(c => c.Name == healingReceiverName);
+            if (healingReceiverCharacter == null)
+            {
+                throw new ArgumentException(ExceptionMessages.CharacterNotInParty);
+            }
+
+            if (!(healerCharacter is IHealer healer))
+            {
+                throw new ArgumentException(ExceptionMessages.HealerCannotHeal, healerName);
+            }
+
+            healer.Heal(healingReceiverCharacter);
+            var sb = new StringBuilder();
+            sb.AppendFormat(SuccessMessages.HealCharacter, healerName, healingReceiverName, healerCharacter.AbilityPoints,
+                healingReceiverName, healingReceiverCharacter.Health);
+            return sb.ToString();
         }
     }
 }

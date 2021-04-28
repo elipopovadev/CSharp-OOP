@@ -25,28 +25,32 @@ namespace WarCroft.Entities.Characters.Contracts
 
         public string Name
         {
-            get { return name; }
+            get => name; 
             private set
             {
-                if (string.IsNullOrWhiteSpace(name))
+                if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentException(ExceptionMessages.CharacterNameInvalid);
                 }
 
-                name = value;
+               name = value;
             }
         }
 
-        public double BaseHealth { get; }
+        public double BaseHealth { get;}
 
         public double Health
         {
             get => health;
             set
             {
-                if (health <= this.BaseHealth && health >= 0)
+                if (value <= this.BaseHealth && value > 0)
                 {
                     health = value;
+                }
+                else
+                {
+                    health = 0;
                 }
             }
         }
@@ -57,9 +61,14 @@ namespace WarCroft.Entities.Characters.Contracts
             get => armor;
             set
             {
-                if (armor <= this.Armor && armor >= 0)
+                if (value <= this.BaseArmor && value > 0)
                 {
                     armor = value;
+                }
+
+                else
+                {
+                    armor = 0;
                 }
             }
         }
@@ -83,11 +92,10 @@ namespace WarCroft.Entities.Characters.Contracts
                 this.Armor -= hitPoints;
             }
 
-            else
+            else if(this.Armor - hitPoints < 0)
             {
-                double hitpointsForReducedArmor = this.Armor;
-                this.Armor -= hitpointsForReducedArmor;
-                double leftHitPointsForReducedHealth = hitPoints - hitpointsForReducedArmor;
+                double leftHitPointsForReducedHealth = hitPoints - this.Armor;
+                this.Armor = 0;               
                 this.Health -= leftHitPointsForReducedHealth;
                 if (this.Health <= 0)
                 {

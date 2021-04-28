@@ -9,21 +9,20 @@ namespace WarCroft
 	{
 		public static void Main(string[] args)
 		{
-            IReader reader = new ConsoleReader();
-            IWriter writer = new ConsoleWriter();
+           IReader reader = new ConsoleReader();
+           IWriter writer = new ConsoleWriter();
 
-            var engine = new Engine(reader, writer);
-            engine.Run();
+           var engine = new Engine(reader, writer);
+           engine.Run();
 
                 /* Use the below configuration instead of the usual one if you wish to print all output messages together after the inputs for easier comparison with the example output. */
 
-            //IReader reader = new ConsoleReader();
-            //var sbWriter = new StringBuilderWriter();
+           // IReader reader = new ConsoleReader();
+           // var sbWriter = new StringBuilderWriter();
 
-            //var engine = new Engine(reader, sbWriter);
-            //engine.Run();
-
-            //Console.WriteLine(sbWriter.sb.ToString().Trim());
+           // var engine = new Engine(reader, sbWriter);
+           // engine.Run();
+           // Console.WriteLine(sbWriter.sb.ToString().Trim());
         }
 	}
 }
