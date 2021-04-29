@@ -47,7 +47,7 @@ namespace WarCroft.Core
 
             if (this.itemPool.Count == 0)
             {
-                throw new InvalidOperationException(ExceptionMessages.ItemPoolEmpty);
+                throw new InvalidOperationException(string.Format(ExceptionMessages.ItemPoolEmpty));
             }
 
             Item lastItem = this.itemPool.Pop();
@@ -88,18 +88,18 @@ namespace WarCroft.Core
             Character attackerCharacter = this.characterParty.FirstOrDefault(c => c.Name == attackerName);
             if (attackerCharacter == null)
             {
-                throw new ArgumentException(ExceptionMessages.CharacterNotInParty, attackerName);
+                throw new ArgumentException(string.Format(ExceptionMessages.CharacterNotInParty, attackerName));
             }
 
             Character receiverCharacter = this.characterParty.FirstOrDefault(c => c.Name == receiverName);
             if (receiverCharacter == null)
             {
-                throw new ArgumentException(ExceptionMessages.CharacterNotInParty, attackerName);
+                throw new ArgumentException(string.Format(ExceptionMessages.CharacterNotInParty, attackerName));
             }
 
             if (!(attackerCharacter is IAttacker attacker))
             {
-                throw new ArgumentException(ExceptionMessages.AttackFail, attackerName);
+                throw new ArgumentException(string.Format(ExceptionMessages.AttackFail, attackerName));
             }
 
             attacker.Attack(receiverCharacter);
@@ -129,12 +129,12 @@ namespace WarCroft.Core
             Character healingReceiverCharacter = this.characterParty.FirstOrDefault(c => c.Name == healingReceiverName);
             if (healingReceiverCharacter == null)
             {
-                throw new ArgumentException(ExceptionMessages.CharacterNotInParty);
+                throw new ArgumentException(string.Format(ExceptionMessages.CharacterNotInParty));
             }
 
             if (!(healerCharacter is IHealer healer))
             {
-                throw new ArgumentException(ExceptionMessages.HealerCannotHeal, healerName);
+                throw new ArgumentException(string.Format(ExceptionMessages.HealerCannotHeal, healerName));
             }
 
             healer.Heal(healingReceiverCharacter);
