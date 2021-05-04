@@ -1,21 +1,22 @@
-﻿using Bakery.Models.BakedFoods.Contracts;
+﻿using Bakery.Models.Drinks.Contracts;
 using Bakery.Utilities.Messages;
 using System;
 using System.Text;
 
-namespace Bakery.Models.BakedFoods
+namespace Bakery.Models.Drinks
 {
-    public abstract class BakedFood : IBakedFood
+    public abstract class Drink : IDrink
     {
         private string name;
         private int portion;
         private decimal price;
-
-        protected BakedFood(string name, int portion, decimal price)
+        private string brand;
+        protected Drink(string name, int portion, decimal price, string brand)
         {
             this.Name = name;
             this.Portion = portion;
             this.Price = price;
+            this.Brand = brand;
         }
 
         public string Name
@@ -60,12 +61,25 @@ namespace Bakery.Models.BakedFoods
             }
         }
 
+        public string Brand
+        {
+            get => brand;
+            private set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException(string.Format(ExceptionMessages.InvalidBrand));
+                }
+
+                brand = value;
+            }
+        }
+
         public override string ToString()
         {
             var sb = new StringBuilder();
-            string value = $"{this.Name}: {this.Portion}g - {this.Price:F2}";
-            sb.AppendLine(value);
-            return sb.ToString().TrimEnd();
+            sb.AppendLine($"{this.Name} {this.Brand} - {this.Portion}ml - {this.Price:F2}lv");
+            return sb.ToString().TrimEnd();        
         }
     }
 }
