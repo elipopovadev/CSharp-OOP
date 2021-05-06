@@ -22,7 +22,7 @@ namespace Bakery.Factory
                 return drink;
             }
 
-            return null; // this is the requirement, but bad practice
+            return null; 
         }
     }
 }

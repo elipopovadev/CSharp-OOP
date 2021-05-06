@@ -80,6 +80,11 @@ namespace Bakery.Core
         public string LeaveTable(int tableNumber)
         {
             ITable foundedTable = this.allOfferedTable.FirstOrDefault(t => t.TableNumber == tableNumber);
+            if (foundedTable == null)
+            {
+                return string.Format(OutputMessages.WrongTableNumber, tableNumber);
+            }
+
             var sb = new StringBuilder();
             totalIncome += foundedTable.GetBill();
             sb.AppendLine($"Table : {tableNumber}");
