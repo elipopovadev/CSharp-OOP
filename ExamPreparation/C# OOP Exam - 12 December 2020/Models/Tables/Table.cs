@@ -4,6 +4,7 @@ using Bakery.Models.Tables.Contracts;
 using Bakery.Utilities.Messages;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Bakery.Models.Tables
@@ -70,18 +71,7 @@ namespace Bakery.Models.Tables
 
         public decimal GetBill()
         {
-            decimal bill = 0;
-            foreach (var drink in this.drinkOrders)
-            {
-                bill += drink.Price;
-            }
-
-            foreach (var food in this.foodOrders)
-            {
-                bill += food.Price;
-            }
-
-            bill += this.Price;
+            decimal bill = foodOrders.Sum(f => f.Price) + drinkOrders.Sum(d => d.Price) + Price;
             return bill;
         }
 
