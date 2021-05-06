@@ -96,8 +96,8 @@ namespace Bakery.Models.Tables
 
         public void Reserve(int numberOfPeople)
         {
-            IsReserved = true;
             this.NumberOfPeople = numberOfPeople;
+            IsReserved = true;
         }
     }
 }

@@ -79,7 +79,7 @@ namespace Bakery.Core
 
         public string LeaveTable(int tableNumber)
         {
-            ITable foundedTable = this.allOfferedTable.FirstOrDefault(t => t.TableNumber == tableNumber);
+            ITable foundedTable = this.allOfferedTable.FirstOrDefault(t => t.TableNumber == tableNumber && t.IsReserved);
             if (foundedTable == null)
             {
                 return string.Format(OutputMessages.WrongTableNumber, tableNumber);
