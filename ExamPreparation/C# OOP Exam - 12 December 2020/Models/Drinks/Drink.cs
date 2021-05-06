@@ -26,7 +26,7 @@ namespace Bakery.Models.Drinks
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException(string.Format(ExceptionMessages.InvalidName));
+                    throw new ArgumentException(ExceptionMessages.InvalidName);
                 }
 
                 name = value;
@@ -40,7 +40,7 @@ namespace Bakery.Models.Drinks
             {
                 if (value <= 0)
                 {
-                    throw new ArgumentException(string.Format(ExceptionMessages.InvalidPortion));
+                    throw new ArgumentException(ExceptionMessages.InvalidPortion);
                 }
 
                 portion = value;
@@ -54,7 +54,7 @@ namespace Bakery.Models.Drinks
             {
                 if (value <= 0)
                 {
-                    throw new ArgumentException(string.Format(ExceptionMessages.InvalidPrice));
+                    throw new ArgumentException(ExceptionMessages.InvalidPrice);
                 }
 
                 price = value;
@@ -68,7 +68,7 @@ namespace Bakery.Models.Drinks
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException(string.Format(ExceptionMessages.InvalidBrand));
+                    throw new ArgumentException(ExceptionMessages.InvalidBrand);
                 }
 
                 brand = value;

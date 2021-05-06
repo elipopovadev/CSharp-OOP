@@ -34,7 +34,7 @@ namespace Bakery.Models.Tables
             {
                 if(value < 0)
                 {
-                    throw new ArgumentException(string.Format(ExceptionMessages.InvalidTableCapacity));
+                    throw new ArgumentException(ExceptionMessages.InvalidTableCapacity);
                 }
 
                 capacity = value;
@@ -48,7 +48,7 @@ namespace Bakery.Models.Tables
             {
                 if (value <= 0)
                 {
-                    throw new ArgumentException(string.Format(ExceptionMessages.InvalidNumberOfPeople));
+                    throw new ArgumentException(ExceptionMessages.InvalidNumberOfPeople);
                 }
 
                 numberOfPeople = value;
@@ -59,7 +59,7 @@ namespace Bakery.Models.Tables
 
         public bool IsReserved { get; private set; }
 
-        public decimal Price => this.NumberOfPeople * this.PricePerPerson;
+        public decimal Price => this.NumberOfPeople * this.PricePerPerson + foodOrders.Sum(f => f.Price) + drinkOrders.Sum(d => d.Price);
 
         public void Clear()
         {
@@ -71,8 +71,7 @@ namespace Bakery.Models.Tables
 
         public decimal GetBill()
         {
-            decimal bill = foodOrders.Sum(f => f.Price) + drinkOrders.Sum(d => d.Price) + Price;
-            return bill;
+            return this.Price;
         }
 
         public string GetFreeTableInfo()

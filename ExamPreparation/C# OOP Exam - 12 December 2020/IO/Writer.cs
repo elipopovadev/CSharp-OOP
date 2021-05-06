@@ -2,7 +2,6 @@
 {
     using Bakery.IO.Contracts;
     using System;
-    using System.IO;
 
     public class Writer : IWriter
     {
