@@ -38,7 +38,7 @@ namespace Bakery.Models.Drinks
             get => portion;
             private set
             {
-                if (portion <= 0)
+                if (value <= 0)
                 {
                     throw new ArgumentException(string.Format(ExceptionMessages.InvalidPortion));
                 }
@@ -52,7 +52,7 @@ namespace Bakery.Models.Drinks
             get => price;
             private set
             {
-                if (price <= 0)
+                if (value <= 0)
                 {
                     throw new ArgumentException(string.Format(ExceptionMessages.InvalidPrice));
                 }

@@ -6,6 +6,7 @@ using Bakery.Models.Tables.Contracts;
 using Bakery.Utilities.Messages;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Bakery.Core
 {
@@ -14,6 +15,7 @@ namespace Bakery.Core
         private readonly List<IBakedFood> allOfferedFood;
         private readonly List<IDrink> allOfferedDrink;
         private readonly List<ITable> allOfferedTable;
+        private decimal totalIncome;
 
         public Controller()
         {
@@ -25,7 +27,7 @@ namespace Bakery.Core
         public string AddDrink(string type, string name, int portion, string brand)
         {
             IDrink drink = DrinkCreator.CreateDrink(type, name, portion, brand);
-            if(drink != null)
+            if (drink != null)
             {
                 allOfferedDrink.Add(drink);
                 return string.Format(OutputMessages.DrinkAdded, name, brand);
@@ -49,7 +51,7 @@ namespace Bakery.Core
         public string AddTable(string type, int tableNumber, int capacity)
         {
             ITable table = TableCreator.CreateTable(type, tableNumber, capacity);
-            if(table != null)
+            if (table != null)
             {
                 allOfferedTable.Add(table);
                 return string.Format(OutputMessages.TableAdded, tableNumber);
@@ -60,59 +62,75 @@ namespace Bakery.Core
 
         public string GetFreeTablesInfo()
         {
-            throw new System.NotImplementedException();
+            List<ITable> listWithFreeTables = allOfferedTable.Where(t => !t.IsReserved).ToList();
+            var sb = new StringBuilder();
+            foreach (var table in listWithFreeTables)
+            {
+                sb.AppendLine(table.GetFreeTableInfo());
+            }
+
+            return sb.ToString().TrimEnd();
         }
 
         public string GetTotalIncome()
-        {
-            throw new System.NotImplementedException();
+        {         
+            return $"Total income: {totalIncome:f2}lv";
         }
 
         public string LeaveTable(int tableNumber)
         {
-            throw new System.NotImplementedException();
+            ITable foundedTable = this.allOfferedTable.FirstOrDefault(t => t.TableNumber == tableNumber);
+            var sb = new StringBuilder();
+            totalIncome += foundedTable.GetBill();
+            sb.AppendLine($"Table : {tableNumber}");
+            sb.AppendLine($"Bill:  {foundedTable.GetBill():f2}");
+            foundedTable.Clear();
+            return sb.ToString().TrimEnd();
         }
 
         public string OrderDrink(int tableNumber, string drinkName, string drinkBrand)
         {
-            ITable findedTable = allOfferedTable.FirstOrDefault(t => t.TableNumber == tableNumber);
+            ITable foundedTable = allOfferedTable.FirstOrDefault(t => t.TableNumber == tableNumber);
             IDrink drink = allOfferedDrink.FirstOrDefault(d => d.Name == drinkName && d.Brand == drinkBrand);
-            if(findedTable == null)
+            if (foundedTable == null)
             {
                 return string.Format(OutputMessages.WrongTableNumber, tableNumber);
             }
 
-            if(drink == null)
+            if (drink == null)
             {
                 return string.Format(OutputMessages.NonExistentDrink, drinkName, drinkBrand);
             }
 
-            return string.Format(OutputMessages.NonExistentDrink);
+            foundedTable.OrderDrink(drink);
+            return string.Format(OutputMessages.DrinkAdded, drinkName, drinkBrand);
         }
 
         public string OrderFood(int tableNumber, string foodName)
         {
-            ITable findedTable = allOfferedTable.FirstOrDefault(t => t.TableNumber == tableNumber);
+            ITable foundedTable = allOfferedTable.FirstOrDefault(t => t.TableNumber == tableNumber);
             IBakedFood food = allOfferedFood.FirstOrDefault(f => f.Name == foodName);
-            if(findedTable == null)
+            if (foundedTable == null)
             {
                 return string.Format(OutputMessages.WrongTableNumber, tableNumber);
             }
 
-            if(food == null)
+            if (food == null)
             {
                 return string.Format(OutputMessages.NonExistentFood, foodName);
             }
 
+            foundedTable.OrderFood(food);
             return string.Format(OutputMessages.FoodOrderSuccessful, tableNumber, foodName);
         }
 
         public string ReserveTable(int numberOfPeople)
         {
-            ITable findedTable= allOfferedTable.FirstOrDefault(t => !t.IsReserved && t.Capacity >= numberOfPeople);
-            if(findedTable!= null)
+            ITable foundedTable = allOfferedTable.FirstOrDefault(t => !t.IsReserved && t.Capacity >= numberOfPeople);
+            if (foundedTable != null)
             {
-                return string.Format(OutputMessages.TableReserved, numberOfPeople);
+                foundedTable.Reserve(numberOfPeople);
+                return string.Format(OutputMessages.TableReserved, foundedTable.TableNumber, numberOfPeople);
             }
 
             return string.Format(OutputMessages.ReservationNotPossible, numberOfPeople);

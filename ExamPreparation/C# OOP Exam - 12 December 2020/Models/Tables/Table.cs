@@ -43,7 +43,7 @@ namespace Bakery.Models.Tables
         public int NumberOfPeople
         {
             get => numberOfPeople;
-            private set
+            protected set
             {
                 if (value <= 0)
                 {
@@ -64,7 +64,7 @@ namespace Bakery.Models.Tables
         {
             this.drinkOrders.Clear();
             this.foodOrders.Clear();
-            this.NumberOfPeople = 0;
+            this.Capacity = 0;
             IsReserved = false;
         }
 
@@ -81,6 +81,7 @@ namespace Bakery.Models.Tables
                 bill += food.Price;
             }
 
+            bill += this.Price;
             return bill;
         }
 
@@ -88,7 +89,7 @@ namespace Bakery.Models.Tables
         {
             var sb = new StringBuilder();
             sb.AppendLine($"Table: {this.TableNumber}");
-            sb.AppendLine($"Type: {this.GetType()}");
+            sb.AppendLine($"Type: {this.GetType().Name}");
             sb.AppendLine($"Capacity: {this.Capacity}");
             sb.AppendLine($"Price per Person: {this.PricePerPerson}");
             return sb.ToString().TrimEnd();
