@@ -86,7 +86,7 @@ namespace Bakery.Core
             }
 
             var sb = new StringBuilder();
-            totalIncome = foundedTable.GetBill();
+            totalIncome += foundedTable.GetBill();
             sb.AppendLine($"Table: {tableNumber}");
             sb.AppendLine($"Bill: {totalIncome:f2}");
             foundedTable.Clear();
