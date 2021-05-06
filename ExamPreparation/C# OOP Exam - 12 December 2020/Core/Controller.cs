@@ -42,7 +42,7 @@ namespace Bakery.Core
             if (food != null)
             {
                 allOfferedFood.Add(food);
-                return string.Format(OutputMessages.FoodAdded, type, name);
+                return string.Format(OutputMessages.FoodAdded, name, type);
             }
 
             return null; // bad practice, but requirement
