@@ -32,7 +32,60 @@ namespace Tests
             axe.Attack(target);
 
             //Assert
-            Assert.Throws<InvalidOperationException>(()=> throw new InvalidOperationException());
+            Assert.Throws<InvalidOperationException>(() => throw new InvalidOperationException());
+        }
+    }
+
+
+    [TestFixture]
+    public class DummyTest
+    {
+        [Test]
+        public void DummyShouldLosesHealthIfAttacked()
+        {
+            // Arrange
+            var dummy = new Dummy(40, 50);
+
+            // Act
+            dummy.TakeAttack(30);
+
+            // Assert
+            Assert.That(dummy.Health, Is.EqualTo(10));
+        }
+
+        [Test]
+        public void DeadDummyShouldThrowsExceptionIfAttacked()
+        {
+            // Arrange
+            var dummy = new Dummy(0, 10);
+
+            // Act
+            // Assert
+            Assert.Throws<InvalidOperationException>(() => throw new InvalidOperationException("Dummy is dead."));
+        }
+
+        [Test]
+        public void DeadDummyCanGiveXP()
+        {
+            // Arrange
+            var dummy = new Dummy(0, 10);
+
+            // Act
+            var experience = dummy.GiveExperience();
+
+            // Assert
+            Assert.That(experience, !Is.EqualTo(null));
+        }
+
+        [Test]
+        public void AliveDummyCantGiveXP()
+        {
+            // Arrange
+            var dummy = new Dummy(40, 10);
+
+            // Act
+            // Assert
+            Assert.Throws<InvalidOperationException>(() => throw new InvalidOperationException("Target is not dead."));
         }
     }
 }
