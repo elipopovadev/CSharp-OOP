@@ -32,7 +32,7 @@ namespace Tests
             axe.Attack(target);
 
             //Assert
-            Assert.Throws<InvalidOperationException>(() => throw new InvalidOperationException());
+            Assert.Throws<InvalidOperationException>(() => throw new InvalidOperationException("Axe is broken"));
         }
     }
 
@@ -61,7 +61,7 @@ namespace Tests
 
             // Act
             // Assert
-            Assert.Throws<InvalidOperationException>(() => throw new InvalidOperationException("Dummy is dead."));
+            Assert.That(() => dummy.TakeAttack(30), Throws.InvalidOperationException.With.Message.EqualTo("Dummy is dead."));
         }
 
         [Test]
@@ -85,7 +85,7 @@ namespace Tests
 
             // Act
             // Assert
-            Assert.Throws<InvalidOperationException>(() => throw new InvalidOperationException("Target is not dead."));
+            Assert.That(() => dummy.GiveExperience(),Throws.InvalidOperationException.With.Message.EqualTo("Target is not dead."));
         }
     }
 }
