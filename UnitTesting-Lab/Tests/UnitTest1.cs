@@ -94,7 +94,7 @@ namespace Tests
             // Arrange
             // Act
             // Assert
-            Assert.That(() => this.aliveDummy.GiveExperience(),Throws.InvalidOperationException.With.Message.EqualTo("Target is not dead."));
+            Assert.That(() => this.aliveDummy.GiveExperience(), Throws.InvalidOperationException.With.Message.EqualTo("Target is not dead."));
         }
     }
 }
