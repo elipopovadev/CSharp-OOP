@@ -80,7 +80,6 @@ namespace Tests
         public void DeadDummyCanGiveXP()
         {
             // Arrange
-
             // Act
             var experience = this.deadDummy.GiveExperience();
 
