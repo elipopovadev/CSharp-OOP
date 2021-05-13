@@ -6,6 +6,7 @@ namespace Tests
     public class CarTests
     {
         private Car car;
+
         [SetUp]
         public void Setup()
         {
