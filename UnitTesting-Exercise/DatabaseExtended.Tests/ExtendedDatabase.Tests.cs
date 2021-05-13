@@ -8,11 +8,16 @@ namespace Tests
     public class ExtendedDatabaseTests
     {
         private Database.Database database;
+        private ExtendedDatabase.ExtendedDatabase extendedDatabase;
 
         [SetUp]
         public void Setup()
         {
             database = new Database.Database(new int[4] { 1, 2, 3, 4 });
+
+            var firstPerson = new Person(1234, "Gosho");
+            var secondPerson = new Person(4567, "Misho");
+            extendedDatabase = new ExtendedDatabase.ExtendedDatabase(new Person[2] { firstPerson, secondPerson });
         }
 
         [Test]
@@ -20,7 +25,6 @@ namespace Tests
         {
             // Arrange
             // Act
-
             // Assert
             Assert.That(database.Count, Is.EqualTo(4));
         }
@@ -86,10 +90,6 @@ namespace Tests
         public void ValidateTheConstructorOfExtendedDatabase()
         {
             // Arrange
-            var firstPerson = new Person(1234, "Gosho");
-            var secondPerson = new Person(4567, "Misho");
-            var extendedDatabase = new ExtendedDatabase.ExtendedDatabase(new Person[2] { firstPerson, secondPerson });
-
             // Act
             // Assert
             Assert.That(() => extendedDatabase.Count, Is.EqualTo(2));
@@ -105,7 +105,7 @@ namespace Tests
             for (int i = 0; i <= capacity; i++)
             {
                 int id = i + 1;
-                string name = "Gosho"+i;
+                string name = "Gosho"+ i;
                 var person = new Person(id, name);
                 listWithPeople.Add(person);
             }
@@ -140,9 +140,6 @@ namespace Tests
         public void ValidateIfAddCommandThrowExceptionWhenThereIsAlreadyUserWithThisName()
         {
             // Arrange
-            var firstPerson = new Person(1234, "Gosho");
-            var secondPerson = new Person(4567, "Misho");
-            var extendedDatabase = new ExtendedDatabase.ExtendedDatabase(new Person[2] { firstPerson, secondPerson });
             var nextPerson = new Person(12345, "Misho");
 
             // Act
@@ -154,9 +151,6 @@ namespace Tests
         public void ValidateIfAddCommandThrowExceptionWhenThereIsAlreadyUserWithThisID()
         {
             // Arrange
-            var firstPerson = new Person(1234, "Gosho");
-            var secondPerson = new Person(4567, "Misho");
-            var extendedDatabase = new ExtendedDatabase.ExtendedDatabase(new Person[2] { firstPerson, secondPerson });
             var nextPerson = new Person(1234, "Drago");
 
             // Act
@@ -168,9 +162,6 @@ namespace Tests
         public void ValidateIfAddCommandWorkCorrectly()
         {
             // Arrange
-            var firstPerson = new Person(1234, "Gosho");
-            var secondPerson = new Person(4567, "Misho");
-            var extendedDatabase = new ExtendedDatabase.ExtendedDatabase(new Person[2] { firstPerson, secondPerson });
             var nextPerson = new Person(234563, "Ivan");
 
             // Act
@@ -195,9 +186,6 @@ namespace Tests
         public void ValidateIfRemoveCommandWorkCorrectly()
         {
             // Arrange
-            var firstPerson = new Person(1234, "Gosho");
-            var secondPerson = new Person(4567, "Misho");
-            var extendedDatabase = new ExtendedDatabase.ExtendedDatabase(new Person[2] { firstPerson, secondPerson });
 
             // Act
             extendedDatabase.Remove();
@@ -210,9 +198,6 @@ namespace Tests
         public void ValidateIfCommandFindByUsernameThrowExceptionWithEmptyOrNullParameter()
         {
             // Arrange
-            var firstPerson = new Person(1234, "Gosho");
-            var secondPerson = new Person(4567, "Misho");
-            var extendedDatabase = new ExtendedDatabase.ExtendedDatabase(new Person[2] { firstPerson, secondPerson });
 
             // Act
             // Assert
@@ -223,9 +208,6 @@ namespace Tests
         public void ValidateIfCommandFindByUsernameThrowExceptionWhenNameNotExistInExtendedDatabase()
         {
             // Arrange
-            var firstPerson = new Person(1234, "Gosho");
-            var secondPerson = new Person(4567, "Misho");
-            var extendedDatabase = new ExtendedDatabase.ExtendedDatabase(new Person[2] { firstPerson, secondPerson });
 
             // Act
             // Assert
@@ -236,9 +218,6 @@ namespace Tests
         public void ValidateIfCommandFindByUsernameWorkCorrectly()
         {
             // Arrange
-            var firstPerson = new Person(1234, "Gosho");
-            var secondPerson = new Person(4567, "Misho");
-            var extendedDatabase = new ExtendedDatabase.ExtendedDatabase(new Person[2] { firstPerson, secondPerson });
 
             // Act
             var findedPerson = extendedDatabase.FindByUsername("Gosho");
@@ -251,10 +230,7 @@ namespace Tests
         public void ValidateIfCommandFindByIdThrowExceptionWhenIdIsNegativeNumber()
         {
             // Arrange
-            var firstPerson = new Person(1234, "Gosho");
-            var secondPerson = new Person(4567, "Misho");
-            var extendedDatabase = new ExtendedDatabase.ExtendedDatabase(new Person[2] { firstPerson, secondPerson });
-
+ 
             // Act
             //Assert
             Assert.Throws<ArgumentOutOfRangeException>(() => extendedDatabase.FindById(-1), "Id should be a positive number!");
@@ -264,10 +240,7 @@ namespace Tests
         public void ValidateIfCommandFindByIdThrowExceptionWhenIdNotExist()
         {
             // Arrange
-            var firstPerson = new Person(1234, "Gosho");
-            var secondPerson = new Person(4567, "Misho");
-            var extendedDatabase = new ExtendedDatabase.ExtendedDatabase(new Person[2] { firstPerson, secondPerson });
-
+      
             // Act
             // Assert
             Assert.That(() => extendedDatabase.FindById(12345), Throws.InvalidOperationException.With.Message.EqualTo("No user is present by this ID!"));
@@ -277,9 +250,6 @@ namespace Tests
         public void ValidateIfCommandFindByIdWorkCorrectly()
         {
             // Arrange
-            var firstPerson = new Person(1234, "Gosho");
-            var secondPerson = new Person(4567, "Misho");
-            var extendedDatabase = new ExtendedDatabase.ExtendedDatabase(new Person[2] { firstPerson, secondPerson });
 
             // Act
             var findedPerson = extendedDatabase.FindById(1234);
