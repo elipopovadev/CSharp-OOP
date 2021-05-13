@@ -5,16 +5,17 @@ namespace Tests
 {
     public class CarTests
     {
+        private Car car;
         [SetUp]
         public void Setup()
         {
+            car = new Car("opel", "zafira", 10, 50);
         }
 
         [Test]
         public void ValidateTheCarConstructor()
         {
             // Arrange
-            var car = new Car("opel", "zafira", 10, 50);
 
             // Act
             // Assert
@@ -66,7 +67,7 @@ namespace Tests
         {
             // Arrange
             // Act
-            var car = new Car("opel", "zafira", 10, 50);
+            // Assert
             Assert.That(() => car.Refuel(0), Throws.ArgumentException.With.Message.EqualTo("Fuel amount cannot be zero or negative!"));
         }
 
@@ -74,7 +75,6 @@ namespace Tests
         public void ValidateRefuelCommandIfFuelToRefuelIsSmallerThanFuelCapacity()
         {
             // Arrange
-            var car = new Car("opel", "zafira", 10, 50);
 
             // Act
             car.Refuel(50);
@@ -87,7 +87,6 @@ namespace Tests
         public void ValidateRefuelCommandIfFuelToRefuelIsBiggerThanFuelCapacity()
         {
             // Arrange
-            var car = new Car("opel", "zafira", 10, 50);
 
             // Act
             car.Refuel(51);
@@ -100,7 +99,6 @@ namespace Tests
         public void ValidateDriveCommandIfWorkCorrectly()
         {
             // Arrange
-            var car = new Car("opel", "zafira", 10, 50);
 
             // Act
             car.Refuel(30);
@@ -116,7 +114,6 @@ namespace Tests
         public void ValidateDriveCommandIfThrowExceptionWhenTheFuelIsNotEnough()
         {
             // Arrange
-            var car = new Car("opel", "zafira", 10, 50);
 
             // Act
             car.Refuel(1);
