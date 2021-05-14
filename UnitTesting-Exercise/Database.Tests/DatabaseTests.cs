@@ -77,6 +77,8 @@ namespace Tests
 
         [TestCase(new int[] { 1, 2, 3 })]
         [TestCase(new int[] { 0 })]
+        [TestCase(new int[] {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16})]
+        [TestCase(new int[] {})]
         public void FetchCommandShouldReturnCopyOfData(int[] expectedData)
         {
             // Arrange
