@@ -10,7 +10,7 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-            database = new Database.Database(new int[4] { 1, 2, 3, 4 });
+            this.database = new Database.Database(new int[4] { 1, 2, 3, 4 });
         }
 
         [Test]
@@ -21,6 +21,13 @@ namespace Tests
 
             // Assert
             Assert.That(database.Count, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void ConstructorShouldThrowExceptionWithBiggerDataThanCapacity()
+        {
+            int[] data = new int[17] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 };
+            Assert.That(() => new Database.Database(data), Throws.InvalidOperationException.With.Message.EqualTo("Array's capacity must be exactly 16 integers!"));
         }
 
         [Test]
