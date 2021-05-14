@@ -75,16 +75,18 @@ namespace Tests
             Assert.That(() => database.Remove(), Throws.InvalidOperationException.With.Message.EqualTo("The collection is empty!"));
         }
 
-        [Test]
-        public void ValidateFetchCommand()
+        [TestCase(new int[] { 1, 2, 3 })]
+        [TestCase(new int[] { 0 })]
+        public void FetchCommandShouldReturnCopyOfData(int[] expectedData)
         {
             // Arrange
+            this.database = new Database.Database(expectedData);
 
             // Act
              int[] resultArray  = database.Fetch();
 
             // Assert
-            Assert.That(() => resultArray, Is.EqualTo(new int[4] { 1, 2, 3, 4 }));
+            CollectionAssert.AreEqual(expectedData,resultArray);
         }
     }
 }
