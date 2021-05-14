@@ -5,9 +5,13 @@ namespace Tests
 {
     public class WarriorTests
     {
+        private Warrior warrior;
+        private Warrior defenceWarrior;
         [SetUp]
         public void Setup()
         {
+            warrior = new Warrior("viking", 50, 80);
+            defenceWarrior = new Warrior("defenceViking", 50, 80);
         }
 
         [Test]
@@ -15,7 +19,6 @@ namespace Tests
         {
             // Arrange
             // Act
-            var warrior = new Warrior("viking", 50, 80);
 
             // Assert
             Assert.That(() => warrior.Name, Is.EqualTo("viking"));
@@ -61,10 +64,10 @@ namespace Tests
             // Arrange
             // Act
             var warrior = new Warrior("viking", 50, HP);
-            var anotherWarrior = new Warrior("anotherViking", 40, 50);
+            var defenceWarrior = new Warrior("anotherViking", 40, 50);
 
             // Assert
-            Assert.That(() => warrior.Attack(anotherWarrior), Throws.InvalidOperationException.With.Message.EqualTo("Your HP is too low in order to attack other warriors!"));
+            Assert.That(() => warrior.Attack(defenceWarrior), Throws.InvalidOperationException.With.Message.EqualTo("Your HP is too low in order to attack other warriors!"));
         }
 
         [TestCase(30)]
@@ -73,11 +76,10 @@ namespace Tests
         {
             // Arrange
             // Act
-            var warrior = new Warrior("viking", 50, 80);
-            var anotherWarrior = new Warrior("anotherViking", 40, HP);
+            var defenceWarrior = new Warrior("defenceViking", 40, HP);
 
             // Assert
-            Assert.That(() => warrior.Attack(anotherWarrior), Throws.InvalidOperationException.With.Message.EqualTo("Enemy HP must be greater than 30 in order to attack him!"));
+            Assert.That(() => warrior.Attack(defenceWarrior), Throws.InvalidOperationException.With.Message.EqualTo("Enemy HP must be greater than 30 in order to attack him!"));
         }
 
         [Test]
@@ -85,11 +87,10 @@ namespace Tests
         {
             // Arrange
             // Act
-            var warrior = new Warrior("viking", 50, 80);
-            var anotherWarrior = new Warrior("anotherViking", 200, 80);
+            var defenceWarrior = new Warrior("defenceViking", 200, 80);
 
             // Assert
-            Assert.That(() => warrior.Attack(anotherWarrior), Throws.InvalidOperationException.With.Message.EqualTo("You are trying to attack too strong enemy"));
+            Assert.That(() => warrior.Attack(defenceWarrior), Throws.InvalidOperationException.With.Message.EqualTo("You are trying to attack too strong enemy"));
         }
 
         [Test]
@@ -97,7 +98,6 @@ namespace Tests
         {
             // Arrange
             var warrior = new Warrior("viking", 50, 110);
-            var defenceWarrior = new Warrior("anotherViking", 50, 80);
 
             // Act
             warrior.Attack(defenceWarrior);
@@ -111,7 +111,6 @@ namespace Tests
         {
             // Arrange
             var warrior = new Warrior("viking", 100, 110);
-            var defenceWarrior = new Warrior("defenceViking", 50, 80);
 
             // Act
             warrior.Attack(defenceWarrior);
