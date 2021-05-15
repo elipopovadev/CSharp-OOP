@@ -29,6 +29,16 @@ namespace Tests
         }
 
         [Test]
+        public void ValidateIfArenaContainsEnrolledWarrior()
+        {
+            // Arrange
+            // Act
+
+            // Assert
+            Assert.That(() => arena.Warriors, Has.Member(firstWarrior));
+        }
+
+        [Test]
         public void ValidateIfEnrollCommandThrowExceptionWhenWarriorIsAlreadyEnrolled()
         {
             // Arrange
