@@ -19,7 +19,7 @@ namespace Tests
         }
 
         [Test]
-        public void ValidateIfArenaContainsCorrectWarriorsCountAfterEnrollCommand()
+        public void ValidateIfArenaIncreaseCountAfterEnrollCommand()
         {
             // Arrange
             // Act
