@@ -45,6 +45,8 @@
     <Compile Include="Axe.cs" />
     <Compile Include="Dummy.cs" />
     <Compile Include="Hero.cs" />
+    <Compile Include="Iterfaces\IWeapon.cs" />
+    <Compile Include="Iterfaces\ITarget.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
