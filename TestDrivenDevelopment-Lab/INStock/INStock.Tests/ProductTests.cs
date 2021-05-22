@@ -13,7 +13,7 @@ namespace INStock.Tests
             var product = new Product("testProduct", 4, 5);
 
             // Assert
-            Assert.That(product.Name, Is.EqualTo("testProduct"));
+            Assert.That(product.Label, Is.EqualTo("testProduct"));
             Assert.That(product.Price, Is.EqualTo(4));
             Assert.That(product.Quantity, Is.EqualTo(5));
         }

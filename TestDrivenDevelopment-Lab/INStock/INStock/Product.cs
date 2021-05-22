@@ -4,19 +4,19 @@ namespace INStock
 {
     public class Product : IProduct
     {
-        private string name;
+        private string label;
         private decimal price;
         private int quantity;
-        public Product(string name, decimal price, int quantity)
+        public Product(string label, decimal price, int quantity)
         {
-            this.Name = name;
+            this.Label = label;
             this.Price = price;
             this.Quantity = quantity;
         }
 
-        public string Name
+        public string Label
         {
-            get => name;
+            get => label;
             set
             {
                 if (string.IsNullOrEmpty(value))
@@ -24,7 +24,7 @@ namespace INStock
                     throw new ArgumentException("The name of product should not be null");
                 }
 
-                name = value;
+                label = value;
             }
         }
 
