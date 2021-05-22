@@ -13,6 +13,7 @@ namespace INStock
             this.Price = price;
             this.Quantity = quantity;
         }
+
         public string Name
         {
             get => name;
@@ -34,12 +35,12 @@ namespace INStock
             {
                 if(value == 0)
                 {
-                    throw new ArgumentException("The price can not be zero");
+                    throw new ArgumentOutOfRangeException("The price can not be zero");
                 }
 
                 if(value < 0)
                 {
-                    throw new ArgumentException("The price can not be negative number");
+                    throw new ArgumentOutOfRangeException("The price can not be negative number");
                 }
 
                 price = value;
@@ -54,7 +55,7 @@ namespace INStock
             {
                 if(value < 0)
                 {
-                    throw new ArgumentException("The quantity can not be negative number");
+                    throw new ArgumentOutOfRangeException("The quantity can not be negative number");
                 }
 
                 quantity = value;

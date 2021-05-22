@@ -1,6 +1,7 @@
 namespace INStock.Tests
 {
     using NUnit.Framework;
+    using System;
 
     public class ProductTests
     {
@@ -35,7 +36,7 @@ namespace INStock.Tests
             // Act
 
             // Assert
-            Assert.That(() => new Product("testProduct", 0, 5), Throws.ArgumentException.With.Message.EqualTo("The price can not be zero"));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Product("testProduct", 0, 5), "The price can not be zero");
         }
 
         [Test]
@@ -45,7 +46,7 @@ namespace INStock.Tests
             // Act
 
             // Assert
-            Assert.That(() => new Product("testProduct", -1, 5), Throws.ArgumentException.With.Message.EqualTo("The price can not be negative number"));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Product("testProduct", -1, 5), "The price can not be negative number");
         }
 
         [Test]
@@ -55,7 +56,7 @@ namespace INStock.Tests
             // Act
 
             // Assert
-            Assert.That(() => new Product("testProduct", 1, -3), Throws.ArgumentException.With.Message.EqualTo("The quantity can not be negative number"));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new Product("testProduct", 1, -3), "The quantity can not be negative number");
         }
     }
 }
