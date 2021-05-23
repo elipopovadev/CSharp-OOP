@@ -2,7 +2,7 @@
 
 namespace INStock
 {
-    public class Product : IProduct, IComparable<Product>
+    public class Product : IProduct
     {
         private string label;
         private decimal price;
@@ -60,11 +60,6 @@ namespace INStock
 
                 quantity = value;
             }
-        }
-
-        public int CompareTo(Product anotherProduct)
-        {
-          return anotherProduct.price.CompareTo(this.price);
         }
 
         public override int GetHashCode()

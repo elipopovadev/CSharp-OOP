@@ -9,13 +9,13 @@
         public ProductStock()
         {
             this.ProductPerLabel = new Dictionary<string, Product>();
-            this.Products = new List<Product>();
+            this.Products = new List<IProduct>();
             this.ProductsPerPrice = new SortedList<decimal, HashSet<Product>>(); // in descending order
             this.ProductsPerQuantity = new SortedList<int, HashSet<Product>>();
         }
 
         public Dictionary<string, Product> ProductPerLabel { get; }
-        public List<Product> Products { get; }
+        public List<IProduct> Products { get; }
         public SortedList<decimal, HashSet<Product>> ProductsPerPrice { get; }
         public SortedList<int, HashSet<Product>> ProductsPerQuantity { get; }
 
@@ -49,7 +49,7 @@
             return ProductPerLabel.ContainsKey(product.Label); // O(1)
         }
 
-        public Product Find(int index)
+        public IProduct Find(int index)
         {
             if (index < 0 && index > ProductPerLabel.Count)
             {
@@ -68,34 +68,36 @@
             return product;
         }
 
-        public List<Product> FindAllInPriceRange(decimal priceFrom, decimal priceTo)
+        public List<IProduct> FindAllInPriceRange(decimal priceFrom, decimal priceTo)
         {
-            List<Product> resultInDescendingOrder = new List<Product>();
+            List<IProduct> result = new List<IProduct>();
             IList<decimal> keys = ProductsPerPrice.Keys;
 
             if (keys.Contains(priceTo) == false)
             {
-                return resultInDescendingOrder; // empty
+                return result; // empty
             }
 
-            if (priceTo > keys[0])
+            if (priceTo > keys.Last())
             {
                 priceTo = keys[0];
             }
 
-            if (priceFrom < keys.Last())
+            if (priceFrom < keys[0])
             {
-                priceFrom = keys.Last();
+                priceFrom = keys[0];
             }
 
             foreach (decimal price in keys)
             {
                 if (price <= priceTo && price >= priceFrom)
                 {
-                    resultInDescendingOrder.AddRange(ProductsPerPrice[price]);
+                    result.AddRange(ProductsPerPrice[price]);
                 }
             }
-            return resultInDescendingOrder;
+
+            result.Reverse();
+            return result;
         }
 
         public ICollection<Product> FindAllByPrice(decimal price)
@@ -137,18 +139,14 @@
             return GetEnumerator();
         }
 
-        public Product this[int index]
+        public IProduct this[int index]
         {
-            get
-            {
-                return Products[index];
-            }
-
+            get => this.Find(index);
             set
             {
                 if(index >= 0 && index <= Products.Count)
                 {
-                    Products[index] = value;
+                    this.Products[index] = value;
                 }
             }
         }
