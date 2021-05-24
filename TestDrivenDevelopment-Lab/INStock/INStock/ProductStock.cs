@@ -3,7 +3,7 @@
     using System;
     using System.Linq;
     using System.Collections.Generic;
-    public class ProductStock : IEnumerable<string>
+    public class ProductStock : IEnumerable<Product>
     {
 
         public ProductStock()
@@ -120,11 +120,11 @@
             return ProductsPerQuantity[quantity];
         }
 
-        public IEnumerator<string> GetEnumerator()
+        public IEnumerator<Product> GetEnumerator()
         {
             foreach ((var label, var product) in this.ProductPerLabel)
             {
-                yield return $"{label} {product.Price} {product.Quantity}";
+                yield return product;
             }
         }
 

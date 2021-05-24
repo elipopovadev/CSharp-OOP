@@ -208,12 +208,23 @@
         {
             // Arrange
             // Act
-
-           
+         
             var emptyList = new List<Product>();
 
             // Assert
             CollectionAssert.AreEqual(emptyList, productStock.FindAllByQuantity(10));
+        }
+
+        [Test]
+        public void TheGetEnumeratorShouldWorkCorrectly()
+        {
+            // Arrange
+            // Act
+
+            var expectedResult = new List<Product> { product, newProduct, anotherProduct, nextProduct2 };
+
+            // Assert
+            CollectionAssert.AreEqual(expectedResult, productStock.ToList());
         }
     }
 }
