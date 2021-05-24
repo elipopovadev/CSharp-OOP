@@ -10,7 +10,7 @@
         {
             this.ProductPerLabel = new Dictionary<string, Product>();
             this.Products = new List<IProduct>();
-            this.ProductsPerPrice = new SortedList<decimal, HashSet<Product>>(); // in descending order
+            this.ProductsPerPrice = new SortedList<decimal, HashSet<Product>>(); 
             this.ProductsPerQuantity = new SortedList<int, HashSet<Product>>();
         }
 
@@ -68,29 +68,22 @@
             return product;
         }
 
-        public List<IProduct> FindAllInPriceRange(decimal priceFrom, decimal priceTo)
+        public List<IProduct> FindAllInPriceRange(decimal From, decimal To)
         {
             List<IProduct> result = new List<IProduct>();
             IList<decimal> keys = ProductsPerPrice.Keys;
 
-            if (keys.Contains(priceTo) == false)
+            if(keys[0] > To)
             {
-                return result; // empty
+                return result; // Empty
             }
 
-            if (priceTo > keys.Last())
-            {
-                priceTo = keys[0];
-            }
-
-            if (priceFrom < keys[0])
-            {
-                priceFrom = keys[0];
-            }
+            var priceFrom = Math.Max(From, keys[0]);
+            var priceTo = Math.Min(To, keys.Last());
 
             foreach (decimal price in keys)
             {
-                if (price <= priceTo && price >= priceFrom)
+                if (price >= priceFrom && price <= priceTo)
                 {
                     result.AddRange(ProductsPerPrice[price]);
                 }
@@ -111,9 +104,10 @@
             return ProductsPerPrice[price];
         }
 
-        public Product FindMostExpensiveProducts()
+        public Product FindMostExpensiveProduct()
         {
-            return ProductsPerPrice[0].First();
+            HashSet<Product> listWithProducts = ProductsPerPrice.Values.Last();
+            return listWithProducts.First();
         }
 
         public ICollection<Product> FindAllByQuantity(int quantity)
