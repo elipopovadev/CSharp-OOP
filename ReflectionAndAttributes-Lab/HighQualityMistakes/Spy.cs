@@ -3,6 +3,7 @@
     using System;
     using System.Reflection;
     using System.Text;
+    using System.Linq;
    public class Spy
     {
         public string StealFieldInfo(string classToInvestigate, params string[] fieldsToInvestigate)
@@ -14,7 +15,7 @@
             sb.AppendLine($"Class under investigation: {type}");
             foreach (var fieldAsString in fieldsToInvestigate)
             {
-                var field = type.GetField($"{fieldAsString}", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static);
+                var field = type.GetField($"{fieldAsString}", BindingFlags.Instance| BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static);
                 var fieldValue = field.GetValue(instance);
                 sb.AppendLine($"{field.Name} = {fieldValue}");
             }
@@ -26,8 +27,8 @@
         public string AnalyzeAcessModifiers(string className)
         {
             Type type = typeof(Hacker);
-            var fields = type.GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static);
-            var publicMethods = type.GetMethods(BindingFlags.Instance| BindingFlags.Public);
+            var fields = type.GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static);
+            var publicMethods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance);
             var privateMethods = type.GetMethods(BindingFlags.Instance | BindingFlags.NonPublic);
 
             var sb = new StringBuilder();
@@ -36,12 +37,12 @@
                 sb.AppendLine($"{field.Name} must be private");
             }
 
-            foreach (var method in publicMethods)
+            foreach (var method in publicMethods.Where(m=>m.Name.StartsWith("get")))
             {
                 sb.AppendLine($"{method.Name} have to be public");
             }
 
-            foreach (var method in privateMethods)
+            foreach (var method in privateMethods.Where(m=> m.Name.StartsWith("set")))
             {
                 sb.AppendLine($"{method.Name} have to be private");
             }
