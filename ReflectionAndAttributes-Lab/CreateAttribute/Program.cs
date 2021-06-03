@@ -1,12 +1,12 @@
-﻿using System;
-
-namespace CreateAttribute
+﻿namespace CreateAttribute
 {
-    class Program
+    [Author("Ventsi")]
+    class StartUp
     {
+        [Author("Gosho")]
         static void Main(string[] args)
         {
-            
+
         }
     }
 }
