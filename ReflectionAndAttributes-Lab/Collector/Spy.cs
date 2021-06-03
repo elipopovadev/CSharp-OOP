@@ -80,7 +80,7 @@
 
             foreach (var method in methods.Where(m => m.Name.StartsWith("set")))
             {
-                sb.AppendLine($"{method.Name} will set field of {method.GetParameters().First().ParameterType}");
+                sb.AppendLine($"{method.Name} will set field of {method.GetParameters().First()}");
             }
 
             string result = sb.ToString().TrimEnd();
