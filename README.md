@@ -3,7 +3,8 @@
 
 ### Course content:
 
-![image](https://user-images.githubusercontent.com/75258625/165522054-e0d10b95-2ac0-4c76-9231-4f30d7a52fa4.png)
+![image](https://user-images.githubusercontent.com/75258625/165522146-1cf9ccc0-beaa-419f-a01c-16a1ca9c4f00.png)
+
 
 
 * Defining Classes
