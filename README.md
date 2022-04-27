@@ -4,8 +4,9 @@
 ### Course content:
 
 * Defining Classes
-* Working with Abstraction and Enumeration
-* Encapsulation
 * Inheritance
 * Interfaces and Abstraction
+* Encapsulation
 * Polymorphism
+* Reflection and Attributes
+* Unit Testing
