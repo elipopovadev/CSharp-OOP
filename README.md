@@ -3,6 +3,8 @@
 
 ### Course content:
 
+![image](https://user-images.githubusercontent.com/75258625/165521952-3f712609-38db-4231-b0d7-cca8b466f9dd.png)
+
 * Defining Classes
 * Inheritance
 * Interfaces and Abstraction
