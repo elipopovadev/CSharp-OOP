@@ -3,7 +3,8 @@
 
 ### Course content:
 
-![image](https://user-images.githubusercontent.com/75258625/165521952-3f712609-38db-4231-b0d7-cca8b466f9dd.png)
+![image](https://user-images.githubusercontent.com/75258625/165522054-e0d10b95-2ac0-4c76-9231-4f30d7a52fa4.png)
+
 
 * Defining Classes
 * Inheritance
