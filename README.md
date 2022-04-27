@@ -3,7 +3,8 @@
 
 ### Course content:
 
-![image](https://user-images.githubusercontent.com/75258625/165522146-1cf9ccc0-beaa-419f-a01c-16a1ca9c4f00.png)
+![image](https://user-images.githubusercontent.com/75258625/165523239-058ed7e2-a778-4f8a-9ca2-c0337539f117.png)
+
 
 
 
